@@ -3,6 +3,7 @@ This patch will update the version number shown on the bottom of the dashboard f
 
 **To run**
 Copy paste the command below into the ssh shell of the miner:
+
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_version_update/patch_version.sh -O - | sudo bash
 
 **What it does**
