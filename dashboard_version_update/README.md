@@ -14,3 +14,9 @@ This patch updates the file /var/dashboard/version to contain the value 0.2.9 if
 **What it does not do**
 
 This patch does not update the dashboard only the version number.
+
+**Restoring old version file**
+
+The prior version data is in the file /var/dashboard/version.last
+To restore the original version, run this command:
+sudo cp /var/dashboard/version.last /var/dashboard/version
