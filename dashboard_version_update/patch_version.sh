@@ -29,10 +29,7 @@ if [ "$PWD" = "/var/dashboard" ]; then
     new_version=$(cat version)
     echo "New Version $new_version"
     echo ""
-    echo "Version number patch complete."
-    echo "The prior version data is in the file /var/dashboard/version.last"
-    echo "To restore the original version, run this command:"
-    echo "sudo cp /var/dashboard/version.last /var/dashboard/version"
+    echo "Version number patch completed successfully."
     rm /tmp/$filename
     else
     echo "patch FAILED, Dashboard Version Number left unchanged. Perhaps already applied?"
