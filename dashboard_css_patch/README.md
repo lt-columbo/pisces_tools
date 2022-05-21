@@ -30,4 +30,4 @@ Press Ctrl-F5 (PC) Cmd-F5 (Mac) in browser while on the Pisces Dashboard to caus
 ### Screen Capture of the Dashboard after the patch
 ![Dashboard with new media query](pisces-dashboard-after.png)
 
-[^1] To restore the original css for dashboard versions 0.2.8 and 0.2.9 use: sudo wget https://github.com/lt-columbo/pisces_tools/blob/main/dashboard_css_patch/common.css -O /var/dashboard/public/css/common.css
+[^1] To restore the original css for dashboard versions 0.2.8 and 0.2.9 use: sudo wget https://github.com/lt-columbo/pisces_tools/blob/main/dashboard_css_patch/common.css -O /var/dashboard/public/css/common.css **THIS IS NOT THE INSTALL LINK**
