@@ -1,5 +1,7 @@
 #!/bin/bash
 filename='version.patch.txt'
+pattern="https://quay.io/api/v1/repository/team-helium/miner "
+file_to_test="/etc/monitor-scripts/miner-version-check.sh"
 echo "---------------------------------------------------------------------------------"
 echo " This patch only updates the version number and not the actual dashboard version "
 echo "---------------------------------------------------------------------------------"
@@ -8,7 +10,14 @@ if [ ! -f "/tmp/$filename" ]; then
     echo "$filename does not exist. 1) Check permissions. 2) Run as sudo"
     exit 2
 fi
-
+# compare against last change to dashboard
+match=$(grep $pattern $file_to_test)
+if [ -z "$match" ]; then
+    echo "It doesn't appear that dashboard is on version 0.2.8"
+    echo $match
+    exit 5
+fi
+# change to dashboard, make sure we're there
 cd /var/dashboard
 if [ "$PWD" = "/var/dashboard" ]; then
   cp version version.last
