@@ -1,0 +1,18 @@
+css/common.css 
+--- /var/dashboard/public/css/common.css.orig	2021-11-28 00:00:01.157341169 +0100
++++ /var/dashboard/public/css/common.css	2022-05-21 20:57:02.741032173 +0100
+@@ -674,4 +674,14 @@
+ 		transform: rotate(720deg);
+ 	}
+ }
++/* patched for wider screens so can see map */
++@media only screen and (min-device-width: 768px) {
++	body { 
++		margin-left: 2px;
++	}
++
++	#main {
++ 		width: auto;
++	}
+ 
++}
