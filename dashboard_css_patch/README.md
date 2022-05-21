@@ -1,4 +1,4 @@
-# Pisces Dashboard stylesheet tweek for wide screens
+# Pisces Dashboard v0.2.8 and v0.2.9 stylesheet tweek for wide screens
 
 **To Run:**
 
