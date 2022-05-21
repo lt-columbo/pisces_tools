@@ -22,7 +22,7 @@ Press Ctrl-F5 (PC) Cmd-F5 (Mac) in browser while on the Pisces Dashboard to caus
 
 ### Screen Capture of the Dashboard before the patch
 
-![Dashboard with Original CSS](/assets/images/original-dashboard.png)
+![Dashboard with Original CSS](original-dashboard.png)
 
 ### Screen Capture of the Dashboard after the patch
-![Dashboard with new media query](/assets/images/pisces-dashboard-after.png)
+![Dashboard with new media query](pisces-dashboard-after.png)
