@@ -14,7 +14,7 @@ This patch adds a media query to the end of the css so that when the screen is w
 
 The patch process makes a copy of your css file befor applying the patch. You may revert back to the original css with the following ssh command:
 
-sudo cp /var/dashboard/public/css/common.css.orig cp /var/dashboard/public/css/common.css
+sudo cp /var/dashboard/public/css/common.css.orig /var/dashboard/public/css/common.css
 
 **No Changes Visible**
 
