@@ -4,7 +4,7 @@
 
 Open an ssh session to your Pisces Miner and sign in as admin user. Copy/Paste this command in the session:
 
-wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_css_patch/patch_css.sh -O - | sudo bash
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_css_patch/patch_css.sh -O - | bash
 
 **What this patch does**
 
