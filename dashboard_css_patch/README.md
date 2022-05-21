@@ -19,3 +19,10 @@ sudo cp /var/dashboard/public/css/common.css.orig /var/dashboard/public/css/comm
 **No Changes Visible**
 
 Press Ctrl-F5 (PC) Cmd-F5 (Mac) in browser while on the Pisces Dashboard to cause the browser to reload the css file. Or close the browser and reopen.
+
+### Screen Capture of the Dashboard before the patch
+
+![Dashboard with Original CSS](/assets/images/original-dashboard.png)
+
+### Screen Capture of the Dashboard after the patch
+![Dashboard with new media query](/assets/images/pisces-dashboard-after.png)
