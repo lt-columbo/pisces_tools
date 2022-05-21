@@ -16,6 +16,8 @@ The patch process makes a copy of your css file befor applying the patch. You ma
 
 sudo cp /var/dashboard/public/css/common.css.orig /var/dashboard/public/css/common.css
 
+A copy of the original common.css from the 0.2.8 dashboard is also contained here in the file [common.css](https://github.com/lt-columbo/pisces_tools/blob/main/dashboard_css_patch/common.css) for you to download.
+
 **No Changes Visible**
 
 Press Ctrl-F5 (PC) Cmd-F5 (Mac) in browser while on the Pisces Dashboard to cause the browser to reload the css file. Or close the browser and reopen.
