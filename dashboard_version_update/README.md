@@ -1,15 +1,16 @@
 # Pisces Dashboard Version Number Update Patch
 This patch will update the version number shown on the bottom of the dashboard from 0.2.8 to 0.2.9. It does nothing else and leaves rest of dashboard intact.
 
+**What it does**
+
+This patch updates the file /var/dashboard/version to contain the value 0.2.9 if the version in the file is 0.2.8/
+
 **To run**
 
 Copy paste the command below into the ssh shell of the miner:
 
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_version_update/patch_version.sh -O - | sudo bash
 
-**What it does**
-
-This patch updates the file /var/dashboard/version to contain the value 0.2.9 if the version in the file is 0.2.8/
 
 **What it does not do**
 
