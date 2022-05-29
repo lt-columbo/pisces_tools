@@ -47,9 +47,11 @@ longitude: -77.3429
 Distance between hotspot and validator: 58km Ping time: 23ms Version: 1.11.0
 
 **GeoIp data**
+
  [GeoIp data provided by ipapi.co api](https://ipapi.co/api) service. This is free for up to 30000 queries a month.
 
 **Details of what script does**
+
 This script gathers information on the connected validator a Helium hotspot is connected to.
 This is useful for seeing how close the validator and hotspot are and how long it takes to
 send and receive data. It uses the 
