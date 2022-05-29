@@ -44,7 +44,7 @@ postal: 20190
 latitude: 38.9609
 longitude: -77.3429
 
-Distance between hotspot and validator: 58km Ping time: 23ms Version: 1.11.0
+Distance between hotspot and validator: 358km Ping time: 23ms Version: 1.11.0
 ```
 
 **GeoIp data**
