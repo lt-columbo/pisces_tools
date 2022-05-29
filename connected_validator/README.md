@@ -4,7 +4,7 @@
 
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
-*Sample output*
+**Sample output**
 
 Hot Spot Data
 ip_address: 24.153.124.106
@@ -46,8 +46,10 @@ longitude: -77.3429
 
 Distance between hotspot and validator: 58km Ping time: 23ms Version: 1.11.0
 
+**GeoIp data**
+ [GeoIp data provided by ipapi.co api](https://ipapi.co/api) service. This is free for up to 30000 queries a month.
 
-** Details of what script does **
+**Details of what script does**
 This script gathers information on the connected validator a Helium hotspot is connected to.
 This is useful for seeing how close the validator and hotspot are and how long it takes to
 send and receive data. It uses the 
@@ -60,4 +62,4 @@ send and receive data. It uses the
 7. Uses geographic ip data service ipapi.co to attempt to retrieve geographic data for validator ip.
 8. Finally displays a summary of this data for you to make a decision on whether to restart the miner with 'sudo docker restart miner' command
 
-A caveat in using this tool is that many validatorss seem to be located at AWS (Amazon Web Services) and thos validators do not respond to ping requests.
+A caveat in using this tool is that many validators seem to be located at AWS (Amazon Web Services) and those validators do not respond to ping requests.
