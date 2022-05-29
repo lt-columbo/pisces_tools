@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 /* --------------------------------------------------------------------------------------------
   ltcolumbo's connected validator information - collects data on connected validator 
