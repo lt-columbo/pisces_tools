@@ -5,7 +5,7 @@
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
 **Sample output**
-
+```
 Hot Spot Data
 ip_address: 24.153.124.106
 port: 44158
@@ -45,6 +45,7 @@ latitude: 38.9609
 longitude: -77.3429
 
 Distance between hotspot and validator: 58km Ping time: 23ms Version: 1.11.0
+```
 
 **GeoIp data**
 
