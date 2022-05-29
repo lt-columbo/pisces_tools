@@ -4,6 +4,10 @@
 
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
+**To Install**
+
+wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/connected_validator/install.sh -O - | sudo bash
+
 **Sample output**
 ```
 Hot Spot Data
