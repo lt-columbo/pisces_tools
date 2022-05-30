@@ -14,6 +14,7 @@ Saving to: ‘/home/admin/connected_validator.php’
 Your system is waiting on the sudo password, type it in. Alternatively before running the above command, run:
 
 sudo ls
+
 which will prompt for the sudo password to run the ls command (list files in directory), and then re-run the wget line above while sudo is still active.
 
 
