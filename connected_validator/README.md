@@ -8,11 +8,13 @@ This script will show information about the validator a Pisces miner is connecte
 
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/connected_validator/install.sh -O - | sudo bash
 
-**If install stalls after you see the line ‘/home/admin/connected_validator.php’ saved ...**
-it's waiting on the sudo password, type it in. Alternatively before running the above command, run:
+**If install stalls after you see the line**
+Saving to: ‘/home/admin/connected_validator.php’
+ 
+Your system is waiting on the sudo password, type it in. Alternatively before running the above command, run:
 sudo ls
-which will prompt for the sudo password, and then re-run the wget line above while sudo is still active.
-'
+which will prompt for the sudo password to run the ls command (list files in directory), and then re-run the wget line above while sudo is still active.
+
 
 **Sample output**
 ```
