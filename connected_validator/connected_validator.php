@@ -289,6 +289,8 @@ class unixUtils {
         $ip_match = preg_match('/^tcp.+\s(\d+\.\d+\.\d+\.\d+):8080.*ESTABLISHED$/', $cmd_output[0], $matches);
         if ($ip_match) {
             $ip = $matches[1];
+        } else {
+            echo "It doesn't appear miner in connected to a validator. Run 'netstat -atn | grep 8080' to verify connection.\n";
         }
         $this->log_it(sprintf("netstat returned validator ip of %s \n", $ip));
         return $ip;
