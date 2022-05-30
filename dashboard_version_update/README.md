@@ -3,7 +3,7 @@ This patch will update the version number shown on the bottom of the dashboard f
 
 **What it does**
 
-This patch updates the file /var/dashboard/version to contain the value 0.2.9 if the version in the file is 0.2.8/
+This patch updates the file /var/dashboard/version to contain the value 0.2.9 if the version in the file is 0.2.8. Only useful for those that updated early as has been patched in dashboard.
 
 **To run**
 
