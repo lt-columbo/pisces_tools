@@ -452,6 +452,7 @@ class miner {
             $result['ip_address'] = $result_as_array['ip'];
             $result['organisation'] = $result_as_array['org'];
             $result['asn'] = $result_as_array['asn'];
+            $result['asn_link'] = 'https://dnschecker.org/asn-whois-lookup.php?query=' . $result_as_array['asn'];
             $result['country'] = $result_as_array['country_name'];
             $result['region'] = $result_as_array['region'];
             $result['city'] = $result_as_array['city'];
