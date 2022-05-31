@@ -413,7 +413,7 @@ function generateListFollow($logsPath, $includeDataPackets = false) {
             $output = @"$datetimeStr | {$packet['freq']} | {$rssi} | {$snrStr} | {$noiseStr} | $type | $hash" . PHP_EOL;
             // separators every 20 lines
             if (0 == $i % 20) {
-                echo PHP_EOL . "Following $LogsPath, Press Ctrl-C to exit"  . PHP_EOL . PHP_EOL;
+                echo PHP_EOL . "Following $logsPath, Press Ctrl-C to exit"  . PHP_EOL . PHP_EOL;
                 echo $separator . PHP_EOL;
                 echo $header . PHP_EOL;
                 echo $separator . PHP_EOL;
