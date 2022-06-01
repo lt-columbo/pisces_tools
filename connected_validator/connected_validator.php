@@ -329,6 +329,10 @@ class unixUtils {
                 $this->log_it(sprintf("tac_console_log returned validator name of %s \n", $validator_name));
             }
         }
+      if (!$validator_name) {
+        $this->log_it('Unable to determine miner name - tac_console_log did not find connect_validator in logs');
+        echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
+      }
         return $validator_name;
     }
     // -------------------------------------------------------------------------
