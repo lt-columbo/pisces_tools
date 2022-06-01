@@ -18,10 +18,13 @@ sudo ls
 which will prompt for the sudo password to run the ls command (list files in directory), and then re-run the wget line above while sudo is still active.
 
 **Distribution of Validators by Country**
+
 From this pie chart you can see that 75% of the miners are in the US.
+
+[Distribution of Validators by Country])[images/validators-by-country.png]
 source: https://helium.rhinostake.com/d/bgIG1Xt7k/helium-validator-cg-dashboard?orgId=1&refresh=5m
 
-**Sample output**
+# Sample output  
 ```
 Hot Spot Data
 ip_address: 24.153.124.106
