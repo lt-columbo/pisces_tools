@@ -19,10 +19,19 @@ which will prompt for the sudo password to run the ls command (list files in dir
 
 **Distribution of Validators by Country**
 
-From this pie chart you can see that 75% of the miners are in the US.
+From this pie chart you can see that 76% of the miners are in the US. For those outside the US consult the Helium Board page below to determine if you will be able to find a close validator.
+![Distribution of Validators by Country](images/validators-by-country.png)
 
-[Distribution of Validators by Country)[images/validators-by-country.png]
 source: https://helium.rhinostake.com/d/bgIG1Xt7k/helium-validator-cg-dashboard?orgId=1&refresh=5m
+
+**Ping Times**
+
+Under 100ms are decent, over 200ms, you should consider restarting your miner.
+Many Validators are at Amazon Web Services (AWS). AWS blocks ping requests. Use distance to determine possible ping times. 5,000km and under are probably ok. Over 15,000km you should consider restarting miner.
+
+**ASN**
+
+The ASN is number that defines a group of IP addresses and can be used to determine ownership of the IP address block the validator is part of. There is a link included on the GeoIp data that you can copy/paste into a browser to see the name of the company owning the network block of addresses.
 
 # Sample output  
 ```
