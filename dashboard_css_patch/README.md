@@ -2,7 +2,7 @@
 
 **What this patch does**
 
-This patch adds a media query to the end of the css so that when the screen is wider than 768 pixels, the width becomes auto instead of fixed width. This allows the dashboard to fill your computer monitor showing wider views of the logs and the info pages. It has no effect on mobile browsers since their width is less than 768 pixels.
+This patch adds a media query to the end of the css so that when the screen is wider than 768 pixels, the width becomes auto instead of fixed width. This allows the dashboard to fill your computer monitor showing wider views of the logs and the info pages. It has no effect on mobile browsers since their width is less than 768 pixels. 
 
 
 **To Run:**
