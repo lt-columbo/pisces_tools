@@ -5,6 +5,7 @@
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
 **To Use**
+
 ssh in to your Pisces miner.
 
 Any of the following methods will run the script:
