@@ -4,6 +4,14 @@
 
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
+**To Use**
+ssh in to your Pisces miner.
+
+Any of the following methods will run the script:
+1. sudo /home/admin/connectedvalidator.php
+2. sudo ~/connected_validator.php
+3. sudo ./connected_validator.php  (requires you to be in the /home/admin directory)
+
 **To Install**
 
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/connected_validator/install.sh -O - | sudo bash
