@@ -8,9 +8,9 @@ This script will show information about the validator a Pisces miner is connecte
 ssh in to your Pisces miner.
 
 Any of the following methods will run the script:
-1. sudo /home/admin/connectedvalidator.php
-2. sudo ~/connected_validator.php
-3. sudo ./connected_validator.php  (requires you to be in the /home/admin directory)
+1. /home/admin/connectedvalidator.php
+2. ~/connected_validator.php
+3. ./connected_validator.php  (requires you to be in the /home/admin directory)
 
 **To Install**
 
