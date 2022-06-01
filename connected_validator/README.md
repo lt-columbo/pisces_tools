@@ -34,7 +34,7 @@ From this pie chart you can see that 76% of the miners are in the US. For those 
 source: https://helium.rhinostake.com/d/bgIG1Xt7k/helium-validator-cg-dashboard?orgId=1&refresh=5m
 
 **Ping Times**
-
+ 
 Under 100ms are decent, over 200ms, you should consider restarting your miner.
 Many Validators are at Amazon Web Services (AWS). AWS blocks ping requests. Use distance to determine possible ping times. 5,000km and under are probably ok. Over 15,000km you should consider restarting miner.
 
