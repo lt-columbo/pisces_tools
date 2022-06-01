@@ -50,7 +50,7 @@ $version = '2022052700';
 $console_log_filename = "/home/pi/hnt/miner/log/console.log";
 
 // script log
-$find_log_filename = "/home/pi/hnt/miner/log/find_local_validator.log";
+$find_log_filename = "/home/admin/connected_validator.log";
 
 class logger {
     private $f;
