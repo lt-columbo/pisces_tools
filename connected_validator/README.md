@@ -21,7 +21,7 @@ which will prompt for the sudo password to run the ls command (list files in dir
 
 From this pie chart you can see that 75% of the miners are in the US.
 
-[Distribution of Validators by Country])[images/validators-by-country.png]
+[Distribution of Validators by Country)[images/validators-by-country.png]
 source: https://helium.rhinostake.com/d/bgIG1Xt7k/helium-validator-cg-dashboard?orgId=1&refresh=5m
 
 # Sample output  
