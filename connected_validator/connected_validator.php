@@ -317,7 +317,7 @@ class unixUtils {
             $cmd_result = $this->run_command($cmd, $cmd_output);
             $cmd = sprintf('tac ' . $console_log . '.%d | grep -E "connect_validator.*%s"', $i, $escaped_ip_address);
             $i++;
-        } while (5 > $i && 0 == sizeof($cmd_output));
+        } while (6 > $i && 0 == sizeof($cmd_output));
         // --------------------------------------------------
         // Did we get a match?, if so pull out validator name
         // --------------------------------------------------
