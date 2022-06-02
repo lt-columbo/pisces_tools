@@ -46,7 +46,7 @@
 // change to do netstat, trackip address changes
 define('PING_COUNT', 6);
 define('PING_INTERVAL', 1);
-$version = '2022052700';
+$version = '2022060200';
 $console_log_filename = "/home/pi/hnt/miner/log/console.log";
 
 // script log
