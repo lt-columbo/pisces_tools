@@ -7,5 +7,5 @@ wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/connected_va
 chmod ugo+x /home/admin/connected_validator.php
 chown admin:admin /home/admin/connected_validator.php
 echo "---------------------------------------------------------------------------"
-echo " To run: type sudo connected_validator_info.php"
+echo " To run: type ./connected_validator_info.php"
 echo "----------------------------------------------------------------------------"
