@@ -4,6 +4,12 @@
 
 This script will show information about the validator a Pisces miner is connected to including validator version, ping time and geographic data.
 
+# Requires curl installed
+
+If you see PHP Fatal Error: Uncaught Error: Call to undefined function curl_init(), then run this to install curl and php-curl module:
+
+sudo apt install curl php7.3-curl
+
 **To Use**
 
 ssh in to your Pisces miner.
