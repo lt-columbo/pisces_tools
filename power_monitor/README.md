@@ -11,9 +11,9 @@ It may be useful if you are experiencing power troubles with your Raspberry Pi
    -f=follow: run forever  
    
  **Examples:**  
- sudo ././power_monitor.sh -f run forever, sampling every 5 seconds  
- sudo ././power_monitor.sh -f -i 10 run forever sample every 10 seconds  
- sudo ././power_monitor.sh -c 6  sample 6 times every 5 seconds  
+ sudo ./power_monitor.sh -f run forever, sampling every 5 seconds  
+ sudo ./power_monitor.sh -f -i 10 run forever sample every 10 seconds  
+ sudo ./power_monitor.sh -c 6  sample 6 times every 5 seconds  
 
 You may send the output to a file to look at it later. Because we are using sudo, there is a trick to it:  
 sudo sh -c "./power_monitor.sh -f > pm.log"  
