@@ -1,6 +1,7 @@
 # Power Monitor
 
-**A simple script to repeatedly run Raspberry Pi voltage samples**
+**A simple script to repeatedly run Raspberry Pi voltage samples**  
+It may be useful if you are experiencing power troubles with your Raspberry Pi
 
 # Usage
 
