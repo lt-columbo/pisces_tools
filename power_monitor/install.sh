@@ -7,4 +7,3 @@ chmod ugo+x /home/admin/power_monitor.sh
 echo " app installed in: /home/admin/           "
 echo " To run: type sudo ./power_monitor.php -f                                    "  
 echo "--------------------------------------------------------------------------"
-fi
