@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "--------------------------------------------------------------------------"
-echo " Installing connected validator script.                                   "
+echo " Installing power_monitor.sh script                                   "
 echo "--------------------------------------------------------------------------"
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/power_monitor/power_monitor.sh-O /home/admin/power_monitor.sh
 chmod ugo+x /home/admin/power_monitor.sh
