@@ -46,7 +46,7 @@ do
       exit 1
     fi
     ;;
-   ?) echo "usage: $0 "
+   ?) echo "usage: sudo $0 "
       echo "   -i=interval in seconds between voltage checks (default is 5)"
       echo "   -c=number of times to run before stopping"
       echo "   -f follow: run forever"
