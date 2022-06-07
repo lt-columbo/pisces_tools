@@ -29,11 +29,16 @@ wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/power_monito
 
 # Sample Output
 
+2022-06-07 14:01:00 
 core:	volt=0.8500V  
 sdram_c:	volt=1.1000V  
 sdram_i:	volt=1.1000V  
 sdram_p:	volt=1.1000V  
-
+2022-06-07 14:01:05 
+core:	volt=0.8500V  
+sdram_c:	volt=1.1000V  
+sdram_i:	volt=1.1000V  
+sdram_p:	volt=1.1000V 
 
 # Privileges Required
 
