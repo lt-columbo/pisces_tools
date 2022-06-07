@@ -62,7 +62,8 @@ done
 i=0
 while [ $i -lt $count ]
   do
-   echo "    "
+   dt=`date '+%Y-%m-%d %H:%M:%S'`
+   echo "$dt  "
    for id in core sdram_c sdram_i sdram_p
      do
        echo -e "$id:\t$(vcgencmd measure_volts $id)"
