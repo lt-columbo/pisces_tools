@@ -557,8 +557,8 @@ if ($miner_address_key) {
         $hotspot['ip_address'] = $miner_data['data']['ip_address_data'][0]['ip_address'];
         $hotspot['port'] = $miner_data['data']['ip_address_data'][0]['port'];
         $hotspot['address'] = $miner_address_key;
-        $hotspot['longitude'] = $miner_data['data']['lng'];
-        $hotspot['latitude'] = $miner_data['data']['lat'];
+        $hotspot['longitude'] = round($miner_data['data']['lng'],4);
+        $hotspot['latitude'] = round($miner_data['data']['lat'],4);
         $hotspot['status'] = $miner_data['data']['status']['online'];
         $hotspot['city'] = $miner_data['data']['geocode']['long_city'];
         $hotspot['state'] = $miner_data['data']['geocode']['long_state'];
