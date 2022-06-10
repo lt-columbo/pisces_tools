@@ -25,3 +25,6 @@ It may be safer and certainly easier if you want to run often. Safer because you
 Running from cloud will always run latest version, and you can read the [refresh-dash.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/refresh-dash.sh) before running. All of the commands in this script are in the dashboard's monitor-scripts directory: /etc/monitor-scripts/
 
 There is nothing in this script as written that is harmful.
+
+**Screen Stalls Downloading??**
+sudo wants your password. Type it in. Or if paranoid, cancel, run `sudo ls` then rerun the wget command above and sudo will have cached password.
