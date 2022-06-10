@@ -23,6 +23,6 @@ This script requires sudo privileges because it 1) uses the monitor_scripts to r
 **Install or Run From Cloud?**
 It maybe safer and certainly easier if you want to run often. Safer because you download one time and can read the script, and changes only happen if you update it.
 
-Running from cloud will always run latest version, and you can read the [just_run.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/just-run.sh) before running, but can be easy to not check. All of the commands in this script are in the dashboard's monitor_scripts directory: /etc/monitor_scripts/
+Running from cloud will always run latest version, and you can read the [just_run.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/just-run.sh) which just runs the [refresh_dash.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/refresh-dash.sh) before running, but can be easy to not check. All of the commands in this script are in the dashboard's monitor_scripts directory: /etc/monitor_scripts/
 
 There is nothing in this script as written that is harmful.
