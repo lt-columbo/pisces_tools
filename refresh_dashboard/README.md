@@ -1,5 +1,6 @@
 # Refresh Dashboard Values
 
+**What This Does**
 Many of the values shown on the dashboard are 'cached' - stored in files so that the dashboard pages load quickly. While these values may get out of alignment with actual values, they will get refereshed over time.
 
 However, sometimes one wants to know right now. So this script will run the dashboard monitor_scripts that update the cached values, and, hopefully, load proper values. Sometimes though, docker is slow so values won't get loaded. Wait a minute and retry.
