@@ -286,7 +286,9 @@ class unixUtils {
         $cmd_result = $this->run_command($cmd, $cmd_output);
         // tcp        0      0 192.168.1.1:61780     104.237.209.107:8080    ESTABLISHED
         // in case of multiples, we only look for first ip returned
-        $ip_match = preg_match('/^tcp.+\s(\d+\.\d+\.\d+\.\d+):8080.*ESTABLISHED$/', $cmd_output[0], $matches);
+        if (array_key_exists(0,$cmd_output)) {
+            $ip_match = preg_match('/^tcp.+\s(\d+\.\d+\.\d+\.\d+):8080.*ESTABLISHED$/', $cmd_output[0], $matches);
+        }
         if ($ip_match) {
             $ip = $matches[1];
         } else {
