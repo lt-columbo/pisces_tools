@@ -290,10 +290,10 @@ class unixUtils {
         if ($ip_match) {
             $ip = $matches[1];
         } else {
-            echo "It doesn't appear miner in connected to a validator. Run 'netstat -atn | grep 8080' to verify connection.\n";
+            echo "It doesn't appear miner in connected to a validator. Just restart? Wait 2 mins.\nRun 'netstat -atn | grep 8080' to verify connection.\n";
             echo "There should be at least one connection there showing with status 'ESTABLISHED'\n";
             echo "If not, wait 2 minutes and try the netstat command again.\n";
-            echo "Possible solutions on Pisces: sudo docker restart miner   -or-  sudo reboot  wither should be effective.\n";
+            echo "Possible solutions on Pisces:\n sudo docker restart miner   -or- \n sudo reboot  either should be effective.\n";
         }
         $this->log_it(sprintf("netstat returned validator ip of %s \n", $ip));
         return $ip;
