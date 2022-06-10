@@ -14,7 +14,7 @@ To run:
 sudo ./refresh-dash.sh
 
 [2] Run from cloud (without install):  
-wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/just_run.sh -O - | sudo bash  
+wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/just-run.sh -O - | sudo bash  
 
 **Sudo Required**
 
