@@ -26,5 +26,5 @@ Running from cloud will always run latest version, and you can read the [refresh
 
 There is nothing in this script as written that is harmful.
 
-**Screen Stalls Downloading??**
+**Screen Stalls Downloading??**  
 sudo wants your password. Type it in. Or if paranoid, cancel, run `sudo ls` then rerun the wget command above and sudo will have cached password.
