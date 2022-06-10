@@ -16,7 +16,7 @@ sudo ./refresh-dash.sh
 **[2] Run from cloud (without install):**  
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
 
-**Sudo Required**
+**Sudo Required**  
 This script requires sudo privileges because it 1) uses the monitor_scripts to run privileged commands and 2) those commands write to the dashboard cached files.  
 
 **Install or Run From Cloud?**  
