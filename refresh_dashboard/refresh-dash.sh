@@ -9,7 +9,7 @@
 #External Facing IP Address
 /etc/monitor-scripts/external-ip.sh
 # Blockchain Height, Miner Height, Miner Status, lat, long, recent activity
-/etc/monitor-scripts/helium-statuses.sh 
+/etc/monitor-scripts/helium-statuses.sh > /dev/null
 # info_height run by helium-statuses.sh (local height)
 # /etc/monitor-scripts/info-height.sh
 # Internal IP Address
