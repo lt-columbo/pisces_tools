@@ -15,7 +15,7 @@ To run:
 sudo ./refresh-dash.sh
 
 [2] Run from cloud (without install):  
-wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/just-run.sh -O - | sudo bash  
+wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
 
 **Sudo Required**
 
@@ -24,6 +24,6 @@ This script requires sudo privileges because it 1) uses the monitor_scripts to r
 **Install or Run From Cloud?**  
 It may be safer and certainly easier if you want to run often. Safer because you download one time and can read the script, and changes only happen if you update it.
 
-Running from cloud will always run latest version, and you can read the [just-run.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/just-run.sh) which in turn just runs the [refresh-dash.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/refresh-dash.sh) before running. All of the commands in this script are in the dashboard's monitor_scripts directory: /etc/monitor-scripts/
+Running from cloud will always run latest version, and you can read the [refresh-dash.sh script](https://github.com/lt-columbo/pisces_tools/blob/main/refresh_dashboard/refresh-dash.sh) before running. All of the commands in this script are in the dashboard's monitor-scripts directory: /etc/monitor-scripts/
 
 There is nothing in this script as written that is harmful.
