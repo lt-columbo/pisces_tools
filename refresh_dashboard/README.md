@@ -8,13 +8,13 @@ However, sometimes one wants to know right now. So this script will run the dash
 **How To Use**
 
 There are two ways to run this script.  
-[1] Install it:  
+**[1] Install it:**  
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/install.sh -O - | sudo bash  
 
 To run:  
 sudo ./refresh-dash.sh
 
-[2] Run from cloud (without install):  
+**[2] Run from cloud (without install):**  
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
 
 **Sudo Required**
