@@ -5,8 +5,7 @@ Many of the values shown on the dashboard are 'cached' - stored in files so that
 
 However, sometimes one wants to know right now. So this script will run the dashboard monitor-scripts that update the cached values, and, hopefully, load proper values. Sometimes though, docker is slow so values won't get loaded. So if values are still messed up, wait a minute and retry.
 
-**How To Use**
-
+**How To Use**  
 There are two ways to run this script.  
 **[1] Install it:**  
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/install.sh -O - | sudo bash  
@@ -18,7 +17,6 @@ sudo ./refresh-dash.sh
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
 
 **Sudo Required**
-
 This script requires sudo privileges because it 1) uses the monitor_scripts to run privileged commands and 2) those commands write to the dashboard cached files.  
 
 **Install or Run From Cloud?**  
