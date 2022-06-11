@@ -334,7 +334,7 @@ class unixUtils {
       if (!$validator_name) {
         $this->log_it('Unable to determine miner name - tac_console_log did not find connect_validator in logs');
 	echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
-	echo "Sometimes this is two connections on 808 and one is the validator. Sometimes not connected - yet\n";
+	echo "Sometimes this is two connections on 8080 and one is the validator. Sometimes not connected - yet\n";
 	echo "Sometimes this is a switchover in validators - wait 10 minutes.\n";
       }
         return $validator_name;
