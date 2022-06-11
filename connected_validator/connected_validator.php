@@ -46,7 +46,7 @@
 // change to do netstat, trackip address changes
 define('PING_COUNT', 6);
 define('PING_INTERVAL', 1);
-$version = '2022060200';
+$version = '2022061100';
 $console_log_filename = "/home/pi/hnt/miner/log/console.log";
 
 // script log
@@ -333,7 +333,9 @@ class unixUtils {
         }
       if (!$validator_name) {
         $this->log_it('Unable to determine miner name - tac_console_log did not find connect_validator in logs');
-        echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
+	echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
+	echo "Sometimes this is two connections on 808 and one is the validator. Sometimes not connected - yet\n";
+	echo "Sometimes this is a switchover in validators - wait 10 minutes.\n";
       }
         return $validator_name;
     }
@@ -514,8 +516,7 @@ class miner {
 // ------------------------------------------
 function print_data($data, $title='') {
     if (!empty($title)) {
-        echo "\n$title\n";
-        echo str_repeat('-',strlen($title)) . "\n";
+        echo "\n\e[4m$title\e[0m\n";
     }
     foreach ($data as $key => $value) {
         echo "$key: $value\n";
@@ -534,6 +535,8 @@ $logger->open_log($find_log_filename);
 $helium_api = new heliumApi($logger);
 $unix_utils = new unixUtils($logger);
 $miner = new miner($logger);
+
+echo date('c') . "\n";
 
 
 // -----------------------------------------
@@ -556,12 +559,16 @@ if ($miner_address_key) {
         $miner_data = $helium_api->hotspot_for_address($miner_address_key);
     } while (!$miner_data && 3 > $tries);
     if ($miner_data) {
+        $miner_name = str_replace('-',' ',$miner_data['data']['name']);
+	$miner_name = ucwords(strtolower($miner_name));
+	$hotspot['miner_name'] = $miner_name;
         $hotspot['ip_address'] = $miner_data['data']['ip_address_data'][0]['ip_address'];
         $hotspot['port'] = $miner_data['data']['ip_address_data'][0]['port'];
         $hotspot['address'] = $miner_address_key;
         $hotspot['longitude'] = round($miner_data['data']['lng'],4);
         $hotspot['latitude'] = round($miner_data['data']['lat'],4);
-        $hotspot['status'] = $miner_data['data']['status']['online'];
+	$hotspot['status'] = $miner_data['data']['status']['online'];
+	$hotspot['street'] = $miner_data['data']['geocode']['short_street'];
         $hotspot['city'] = $miner_data['data']['geocode']['long_city'];
         $hotspot['state'] = $miner_data['data']['geocode']['long_state'];
         $hotspot['country'] = $miner_data['data']['geocode']['long_country'];
@@ -611,5 +618,8 @@ if ($hotspot && $validator) {
         $validator_geoip_data['latitude'], $validator_geoip_data['longitude']);
     $validator['distance'] = $distance;
     $validator_geoip_data['distance'] = $distance;
+    if (-1 == $ping_time) {
+	    echo "\e[1m\e[4mWarning:\e[0m Validator did not respond to ping request. Use distance as guide.\n";
+    }
     echo "Distance between hotspot and validator: {$distance}km Ping time: {$ping_time}ms Version: {$validator['version']}\n";
 }
