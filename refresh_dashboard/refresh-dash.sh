@@ -24,3 +24,4 @@
 /etc/monitor-scripts/sn-check.sh
 # CPU Temp
 /etc/monitor-scripts/temp.sh
+echo "Dashboard values refreshed"
