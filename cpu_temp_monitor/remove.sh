@@ -16,6 +16,8 @@ rm /var/dashboard/public/includes/phplot.php
 if [ -z "$(ls -A /var/dashboard/public/includes)" ]; then
   rm -rf /var/dashboard/public/includes
 fi
+# remove graph_cpu_temp.php from public
+rm /var/dashboard/public/graph_cpu_temp.php
 # remove dashboard page for graph
 rm /var/dashboard/pages/cpu_temp.php
 echo "app log-cpu-temp.php removed"
