@@ -17,6 +17,7 @@ wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/log_cpu_temp
 # install cron job to run logger every 15 minutes
 echo "*/15 * * * * /home/admin/log_cpu_temp.php"  >> /var/spool/cron/crontabs/root
 systemctl restart cron.service
+# create empty log files
 touch /var/dashboard/logs/cpu-temp.log
 touch /var/dashboard/logs/cpu-temp-history.log
 echo "app log-cpu-temp.php installed in: /home/admin/"
