@@ -8,8 +8,7 @@ wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_mon
 chmod ugo+x /home/admin/log_cpu_temp.php
 # install phplot in new directory in /var/dashboard
 # create includes if not there
-if [! -d "/var/dashboard/public/includes" ] 
-then
+if [ ! -d "/var/dashboard/public/includes" ]; then
  mkdir /var/dashboard/public/includes
 fi
 wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/phplot.php -O /var/dashboard/public/includes/phplot.php
@@ -21,6 +20,10 @@ wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_mon
 echo "*/15 * * * * /home/admin/log_cpu_temp.php"  >> /var/spool/cron/crontabs/root
 systemctl restart cron.service
 # create empty log files
-touch /var/dashboard/logs/cpu-temp.log
-touch /var/dashboard/logs/cpu-temp-history.log
+if [ ! -f "/var/dashboard/logs/cpu-temp.logs" ]; then
+ touch /var/dashboard/logs/cpu-temp.log
+fi
+if [ ! -f "/var/dashboard/logs/cpu-temp-history.log" ]; then
+ touch /var/dashboard/logs/cpu-temp-history.log
+fi
 echo "app log-cpu-temp.php installed in: /home/admin/"
