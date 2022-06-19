@@ -1,4 +1,5 @@
 <?php
+// this file resides in dashboard at /var/dashboard/public/includes/phplot.php
 // =====================================================================================================
 // Modification: the separate file rgb.inc.php contained a ColorArray. This array was included in this
 // class as a method named: getLargeColorArray() in order to reduce files required to be loaded to one.
