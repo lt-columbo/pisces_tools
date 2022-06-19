@@ -1,5 +1,5 @@
 <?php
-// This file resides in dashboard at /var/dashboard/pages/graph-cpu-temp.php
+// This file resides in dashboard at /var/dashboard/pages/cpu_temp.php
 // requires: gd for php: sudo apt install php7.3-gd
 // -------------------------------------------------------------------------------------------------
 // tailCustom
