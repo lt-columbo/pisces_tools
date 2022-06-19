@@ -140,5 +140,5 @@ $plot->SetLightGridColor('white');
 $plot->SetPrintImage(False);
 $plot->DrawGraph();
 $cpuTempGraph = $plot->EncodeImage();
-$graphHtmlImage = '<img src="' . $cpuTempGraph . '">';
+$graphHtmlImage = '<img  style="width: 100%;" src="' . $cpuTempGraph . '">';
 echo $graphHtmlImage;
