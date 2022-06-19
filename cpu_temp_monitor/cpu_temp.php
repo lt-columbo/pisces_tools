@@ -137,4 +137,6 @@ $plot->SetXTickPos('none');
 $plot->SetPlotBgColor('grey');
 $plot->SetLightGridColor('white');
 //Draw it
+$plot->SetPrintImage(False);
 $plot->DrawGraph();
+$cpuTempGraph = $plot->EncodeImage();
