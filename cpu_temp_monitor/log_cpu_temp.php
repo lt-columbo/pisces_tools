@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 // Crontab:
-// */15 * * * * / /var/dashboard/services/log-cpu-temp.php
+// */15 * * * * /home/admin/log_cpu_temp.php
 define('MAX_CPU_TEMP_RECORDS',96); // in 'daily' file, there is a permanent file too
 define('FILENAME_CPU_TEMP_LOG','/var/dashboard/logs/cpu-temp.log');
 define('FILENAME_CPU_TEMP_HISTORY_LOG','/var/dashboard/logs/cpu-temp-history.log');
