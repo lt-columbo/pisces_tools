@@ -51,7 +51,7 @@ function tailCustom($filepath, $lines = 1, $adaptive = true) {
             $output = ($chunk = fread($f, $seek)) . $output;
 
             // Jump back to where we started reading
-            fseek($f, -strlen($chunk, '8bit'), SEEK_CUR);
+            fseek($f, -strlen($chunk), SEEK_CUR);
 
             // Decrease our line counter
             $lines -= substr_count($chunk, "\n");
