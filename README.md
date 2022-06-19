@@ -9,5 +9,8 @@ Finds the validator you are connected to, displays ping times, distance and othe
 [Lora Packet Analyzer Improvement](https://github.com/lt-columbo/pisces_tools/tree/main/lorapacketforwarder)  
 Extends Inigo Flores Packet Analyzer by addng a -f option to follow the logs and show new packets as they arrive  
 
+[Refresh Dashboard](https://github.com/lt-columbo/pisces_tools/tree/main/refresh_dashboard)  
+Refreshes the dashboard cached values that get out of sync sometime because of docker time out
+
 [Widescreen change to Pisces Dashboard](https://github.com/lt-columbo/pisces_tools/tree/main/dashboard_css_patch)  
 Adds a media query to stylesheet of dashboard to allow the dashboard to take advantage of large screens
