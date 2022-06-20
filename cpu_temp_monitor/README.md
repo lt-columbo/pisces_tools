@@ -20,8 +20,8 @@ sudo rm /var/dashboard/logs/log-cpu-temp.log
 sudo rm /var/dashboard/logs/log-cpu-temp-history.log  
 
 **What are the logs and where are they**  
-There are two logs maintained by the tool:
-cpu-temp.log - contains the last 24 hours of logs, 96 entries
+There are two logs maintained by the tool:  
+cpu-temp.log - contains the last 24 hours of logs, 96 entries  
 cpu-temp-history.log - a perpetual log that contains all logged temperature captures.
 
 The logs are stored in the dashboard logs directory at /var/dashboard/logs  
@@ -33,7 +33,7 @@ The files are in csv format and look like this (times are UTC):
 61.8,2022-06-19,22:00  
 63.3,2022-06-19,22:15  
 
-The first column is sampled temperature in Celcius, second column is date of sample in YYYY-MM-DD format, and third column is time of sample in 24 hour format HH:MM.   
+The first column is sampled temperature in Celcius, second column is date of sample in YYYY-MM-DD format, and third column is time (UTC) of sample in 24 hour format HH:MM.   
 
 **How to view the logs**  
 You may view a graph of the last 24 hours by accessing this url in the Pisces Dashboard:  
@@ -47,7 +47,8 @@ tail -18 /var/dashboard/logs/cpu-temp-history.log
 To 'follow' the log (see new entries as they arrive - every 15 minutes):  
 tail -f /var/dashboard/logs/cpu-temp-history.log  
 
-You may also export the files by ftp to any place you have access to.
+You may also export the files by ftp to any place you have access to. To ftp, you will probably need to install a command line ftp client, and turn on passive mode by typing pass after connecting. To install a ftp client try:  
+sudo apt install ftp
 
 **Sudo Permission Required**  
 This script will run as root because the command 'vcgencmd' used to retrieve cpu temperature is a priviledged command, and the dashboard logs directory is protected requiring root.
