@@ -5,7 +5,7 @@ echo "--------------------------------------------------------------------------
 # remove gd
 apt remove -y php7.3-gd
 # remove logger cron job
-sed -i '/log-cpu-temp/d' /var/spool/cron/crontabs/root
+sed -i '/log_cpu_temp/d' /var/spool/cron/crontabs/root
 systemctl restart cron.service
 # remove cpu temp logger
 cd /home/admin/
