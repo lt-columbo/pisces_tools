@@ -33,6 +33,8 @@ The files are in csv format and look like this (times are UTC):
 61.8,2022-06-19,22:00  
 63.3,2022-06-19,22:15  
 
+The first column is sampled temperature in Celcius, second column is date of sample in YYYY-MM-DD format, and third column is time of sample in 24 hour format HH:MM.   
+
 **How to view the logs**  
 You may view a graph of the last 24 hours by accessing this url in the Pisces Dashboard:  
 https://<your_miner_ip>/graph_cpu_temp.php  
