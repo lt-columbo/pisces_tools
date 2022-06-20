@@ -22,6 +22,7 @@ rm /var/dashboard/public/graph_cpu_temp.php
 rm /var/dashboard/pages/cpu_temp.php
 echo "app log-cpu-temp.php removed"
 echo "NOTE: logs still remain in /var/dashboard/logs"
+echo "The choice is up to you to save or delete."
 echo "to remove:"
-echo "rm /var/dashboard/logs/log-cpu-temp.log"
-echo "rm /var/dashboard/logs/log-cpu-temp-history.log"
+echo "sudo rm /var/dashboard/logs/log-cpu-temp.log"
+echo "sudo rm /var/dashboard/logs/log-cpu-temp-history.log"
