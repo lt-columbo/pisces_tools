@@ -48,7 +48,7 @@ tail -f /var/dashboard/logs/cpu-temp-history.log
 You may also export the files by ftp to any place you have access to.
 
 **Sudo Permission Required**  
-This script will run as root because the command 'vcgencmd' used to retrieve cpu temperature is a priviledged command, and the dashboard log directory is protected.
+This script will run as root because the command 'vcgencmd' used to retrieve cpu temperature is a priviledged command, and the dashboard logs directory is protected requiring root.
 
 **Files in this tool**  
 /var/dashboard/pages/cpu_temp.php - A Dashboard page to display the cpu temperatures within the Dashboard  
