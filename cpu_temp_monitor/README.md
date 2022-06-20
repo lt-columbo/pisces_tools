@@ -61,7 +61,7 @@ This script adds the following cron entry for root:
 */15 * * * * /home/admin/log_cpu_temp.php  
 
 **Removal**  
-The remove.sh script removed everything installed except the logs and patches you may make to the dashboard.
+The remove.sh script removes everything installed except the logs and patches you may make to the dashboard.
 
 **Patching Dashboard Is At Your Own Risk**  
 If scripts are provided to patch the dashboard, you use at your own risk. You should be experienced enough to undo the change, replace with a backup copy (if available) or grab a new one from briffy dashboard on github.
