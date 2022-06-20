@@ -11,7 +11,7 @@ sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_tem
 
 **To Remove**  
 To remove the tool, run the command below on your Pisces miner:  
-sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/install.sh
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/remove.sh
 
 **NOTE**: The remove tool leaves the logs in place. You must remove these yourself if you no longer want them. That way you won't lose data unless you choose to.  
 
