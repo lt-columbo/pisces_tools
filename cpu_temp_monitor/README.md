@@ -65,3 +65,6 @@ The remove.sh script removed everything installed except the logs and patches yo
 
 **Patching Dashboard Is At Your Own Risk**  
 If scripts are provided to patch the dashboard, you use at your own risk. You should be experienced enough to undo the change, replace with a backup copy (if available) or grab a new one from briffy dashboard on github.
+
+**Screen Capture of graph_cpu_temp.php Script**  
+
