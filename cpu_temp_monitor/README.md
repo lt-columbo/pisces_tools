@@ -1,6 +1,6 @@
 ## DO NOT USE YET
 
-## Log CPU Temperature for Pisces Miners
+## CPU Temp Monitor for Pisces Miners
 
 **What it does**  
 This tool will create a scheduled 'cronjob' that will run every 15 minutes capturing the CPU temperator of the Raspberry Pi into logs.  
@@ -37,7 +37,7 @@ The files are in csv format and look like this:
 You may view a graph of the last 24 hours by accessing this url in the Pisces Dashboard:  
 https://<your_miner_ip>/graph_cpu_temp.php  
 
-Unfortunately, there are several versions of the dashboard and integrating directly (links in the dashboad) seems unfeasable. Coming soon, I'll supply a patch file for the original briffy dashboard 0.29
+Unfortunately, there are several versions of the dashboard and integrating directly (links in the dashboad) seems unfeasable. Coming soon, I'll supply a patch file for the original briffy dashboard 0.29, you will then be able to apply the patch and view the graph within the Dashboard.
 
 You may also use an editor or the cat/tail tools to echo the values to the ssh shell.  
 To show the last 18 entries of the cpu-temp-history.log use:  
@@ -46,3 +46,16 @@ To 'follow' the log (see new entries as they arrive - every 15 minutes):
 tail -f /var/dashboard/logs/cpu-temp-history.log  
 
 You may also export the files by ftp to any place you have access to.
+
+**Sudo Permission Required**  
+This script will run as root because the command 'vcgencmd' used to retrieve cpu temperature is a priviledged command, and the dashboard log directory is protected.
+
+**Files in this tool**  
+/var/dashboard/pages/cpu_temp.php - A Dashboard page to display the cpu temperatures within the Dashboard  
+/var/dashboard/public/graph_cpu_temp.php - A script to display the cpu temperature graph without modifying the Dashboard  
+/home/admin/log_cpu_temp.php - the cpu temperature logging script run by cron every 15 minutes.  
+/var/dashboard/public/includes/phplot.php - the plotting tool used to display the graph  
+
+**Cronjob Added**  
+This script adds the following cron entry for root:  
+*/15 * * * * /home/admin/log_cpu_temp.php
