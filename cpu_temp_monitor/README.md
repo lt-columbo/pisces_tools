@@ -27,7 +27,7 @@ cpu-temp-history.log - a perpetual log that contains all logged temperature capt
 The logs are stored in the dashboard logs directory at /var/dashboard/logs  
 
 **Format of the logs**  
-The files are in csv format and look like this:  
+The files are in csv format and look like this (times are UTC):  
 61.3,2022-06-19,21:30  
 60.3,2022-06-19,21:45  
 61.8,2022-06-19,22:00  
