@@ -3,7 +3,7 @@
 ## CPU Temp Monitor for Pisces Miners
 
 **What it does**  
-This tool will create a scheduled 'cronjob' that will run every 15 minutes capturing the CPU temperature of the Raspberry Pi into logs.  
+This tool will create a scheduled 'cronjob' that will run every 15 minutes sampling the CPU temperature of the Raspberry Pi and capturing into logs.  
 
 **To Install**  
 To Install the tool, run the command below in the Pisces Secure Shell (ssh):  
