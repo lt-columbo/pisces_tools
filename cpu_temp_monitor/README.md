@@ -7,11 +7,11 @@ This tool will create a scheduled 'cronjob' that will run every 15 minutes sampl
 
 **To Install**  
 To Install the tool, run the command below in the Pisces Secure Shell (ssh):  
-sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/install.sh
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/install.sh -O - | sudo bash
 
 **To Remove**  
 To remove the tool, run the command below on your Pisces miner:  
-sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/remove.sh
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/remove.sh -O - | sudo bash
 
 **NOTE**: The remove tool leaves the logs in place. You must remove these yourself if you no longer want them. That way you won't lose data unless you choose to.  
 
