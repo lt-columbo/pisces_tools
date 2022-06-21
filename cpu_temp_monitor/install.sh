@@ -26,4 +26,4 @@ fi
 if [ ! -f "/var/dashboard/logs/cpu-temp-history.log" ]; then
  touch /var/dashboard/logs/cpu-temp-history.log
 fi
-echo "app log-cpu-temp.php installed in: /home/admin/"
+echo "app log_cpu_temp.php installed in: /home/admin/"
