@@ -3,6 +3,9 @@
 **What it does**  
 This tool will create a scheduled 'cronjob' that will run every 15 minutes sampling the CPU temperature of the Raspberry Pi and capturing into logs.  
 
+**If install/remove comands below stall**
+sudo is waiting on your password. 
+
 **To Install**  
 To Install the tool, run the command below in the Pisces Secure Shell (ssh):  
 sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/cpu_temp_monitor/install.sh -O - | sudo bash
