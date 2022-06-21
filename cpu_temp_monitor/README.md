@@ -3,7 +3,7 @@
 **What it does**  
 This tool will create a scheduled 'cronjob' that will run every 15 minutes sampling the CPU temperature of the Raspberry Pi and capturing into logs.  
 
-**If install/remove comands below stall**
+**If install/remove comands below stalsl**  
 sudo is waiting on your password. 
 
 **To Install**  
