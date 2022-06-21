@@ -1,5 +1,3 @@
-## DO NOT USE YET
-
 ## CPU Temp Monitor for Pisces Miners
 
 **What it does**  
