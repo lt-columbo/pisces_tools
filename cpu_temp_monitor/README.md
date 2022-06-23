@@ -4,7 +4,7 @@
 This tool will create a scheduled 'cronjob' that will run every 15 minutes sampling the CPU temperature of the Raspberry Pi and capturing into logs.  
 
 **If install/remove comands below stalls**  
-sudo is waiting on your password. Type it in.
+sudo is waiting on your admin password. Type it in.
 
 **To Install**  
 To Install the tool, run the command below in the Pisces Secure Shell (ssh):  
