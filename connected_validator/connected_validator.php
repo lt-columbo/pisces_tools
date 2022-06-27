@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 /* --------------------------------------------------------------------------------------------
-  ltcolumbo's connected validator information - collects data on connected validator 
+  ltcolumbo's connected validator information - collects data on connected validator
 
     Copyright (C) 2022  ltcolumbo
 
@@ -20,33 +20,33 @@
 -------------------------------------------------------------------------------------------- */
 
 // -----------------------------------------------------------------------------------------
-// 
+//
 //                       C O N N E C T E D    V A L I D A T O R    I N F O
 //
 //  This script gathers information on the connected validator a Helium hotspot is connected to.
 //  This is useful for seeing how close the validator and hotspot are and how long it takes to
-//  send and receive data. It uses the 
-//    1. docker miner command to get miner address 
+//  send and receive data. It uses the
+//    1. docker miner command to get miner address
 //    2. uses this address to connect to Helium hotspot_for_address api to gather geographic data
 //    3. finds the connected validator ip address using netstat
-//    4. attempts to ping validator and get round trip time. 
+//    4. attempts to ping validator and get round trip time.
 //    5. Searches console log for validator connect message to get validator address
 //    6. Uses Helium validator_for_address api to gather validator data
 //    7. Uses geographic ip data service ipapi.co to attempt to retrieve geographic
 //       data for validator ip.
-//    8. Finally displays a summary of this data for you to make a decision on whether to 
+//    8. Finally displays a summary of this data for you to make a decision on whether to
 //        restart the miner with 'sudo docker restart miner' command
 //
 //  A caveat in using this tool is that many validatorss seem to be located at AWS (Amazon Web
 //   Services) and thos validators do not respond to ping requests.
 // -------------------------------------------------------------------------------------------------
-      
-  
+
+
 
 // change to do netstat, trackip address changes
 define('PING_COUNT', 6);
 define('PING_INTERVAL', 1);
-$version = '2022061100';
+$version = '2022062700';
 $console_log_filename = "/home/pi/hnt/miner/log/console.log";
 
 // script log
@@ -243,6 +243,7 @@ class heliumApi {
 // ==============================================================================
 class unixUtils {
     private $logger = null;
+    public $ip_data = array();
     // --------------------------------------------------------
     // constructor
     // $logger - logger class that implements log_it(string)
@@ -280,17 +281,26 @@ class unixUtils {
     // are connected to. Return the ip or false on failure
     // -----------------------------------------------------
     public function netstat_atn() {
+        // Note second example below which we don't want to include
         // tcp        0      0 192.168.30.30:60780     104.237.209.107:8080    ESTABLISHED
+        // tcp        0      0 10.0.0.13:38080         144.202.67.195:443      ESTABLISHED
         $ip = false;
-        $cmd = 'netstat -atn | grep "8080.* ESTABLISHED"';
+        $port = false;
+        $cmd = 'netstat -atn | grep ":8080\s.* ESTABLISHED"';
         $cmd_result = $this->run_command($cmd, $cmd_output);
         // tcp        0      0 192.168.1.1:61780     104.237.209.107:8080    ESTABLISHED
         // in case of multiples, we only look for first ip returned
-        if (array_key_exists(0,$cmd_output)) {
-            $ip_match = preg_match('/^tcp.+\s(\d+\.\d+\.\d+\.\d+):8080.*ESTABLISHED$/', $cmd_output[0], $matches);
+        if (is_array($cmd_output) && 0 < sizeof($cmd_output)) {
+            $i = 0;
+            do {
+                $ip_match = preg_match('/^tcp.+\s+(\d+\.\d+\.\d+\.\d+)\:\d+\s+(\d+\.\d+\.\d+\.\d+):(8080)\s.*ESTABLISHED$/', $cmd_output[$i], $matches);
+                $i++;
+            } while (!$ip_match && $i < sizeof($cmd_output));
         }
+
         if ($ip_match) {
-            $ip = $matches[1];
+            $ip = $matches[2];
+            $port = $matches[3];
         } else {
             echo "It doesn't appear miner in connected to a validator. Just restart? Wait 2 mins.\nRun 'netstat -atn | grep 8080' to verify connection.\n";
             echo "There should be at least one connection there showing with status 'ESTABLISHED'\n";
@@ -298,6 +308,8 @@ class unixUtils {
             echo "Possible solutions on Pisces:\n sudo docker restart miner   -or- \n sudo reboot  either should be effective.\n";
         }
         $this->log_it(sprintf("netstat returned validator ip of %s \n", $ip));
+        $this->ip_data['ip_address'] = $ip;
+        $this->ip_data['port'] = $port;
         return $ip;
     }
     // ----------------------------------------------------------
@@ -331,12 +343,14 @@ class unixUtils {
                 $this->log_it(sprintf("tac_console_log returned validator name of %s \n", $validator_name));
             }
         }
-      if (!$validator_name) {
-        $this->log_it('Unable to determine miner name - tac_console_log did not find connect_validator in logs');
-	echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
-	echo "Sometimes this is two connections on 8080 and one is the validator. Sometimes not connected - yet\n";
-	echo "Sometimes this is a switchover in validators - wait 10 minutes.\n";
-      }
+        if (!$validator_name) {
+            $this->log_it('Unable to determine miner name - tac_console_log did not find connect_validator in logs');
+            echo "Unable to determine miner name - tac_console_log did not find a connect_validator in logs\n";
+            echo "Sometimes this is two connections on 8080 and one is the validator. Sometimes not connected - yet\n";
+            echo "Sometimes this is a switchover in validators - wait 10 minutes.\n";
+            echo "Sometimes it's been connected so long the connection has rolled out of the logs.\n";
+
+        }
         return $validator_name;
     }
     // -------------------------------------------------------------------------
@@ -536,8 +550,8 @@ $helium_api = new heliumApi($logger);
 $unix_utils = new unixUtils($logger);
 $miner = new miner($logger);
 
+echo basename($_SERVER['PHP_SELF']) . " version $version\n";
 echo date('c') . "\n";
-
 
 // -----------------------------------------
 // Get miner key so we can lookup lat/long
@@ -560,15 +574,15 @@ if ($miner_address_key) {
     } while (!$miner_data && 3 > $tries);
     if ($miner_data) {
         $miner_name = str_replace('-',' ',$miner_data['data']['name']);
-	$miner_name = ucwords(strtolower($miner_name));
-	$hotspot['miner_name'] = $miner_name;
+        $miner_name = ucwords(strtolower($miner_name));
+        $hotspot['miner_name'] = $miner_name;
         $hotspot['ip_address'] = $miner_data['data']['ip_address_data'][0]['ip_address'];
         $hotspot['port'] = $miner_data['data']['ip_address_data'][0]['port'];
         $hotspot['address'] = $miner_address_key;
         $hotspot['longitude'] = round($miner_data['data']['lng'],4);
         $hotspot['latitude'] = round($miner_data['data']['lat'],4);
-	$hotspot['status'] = $miner_data['data']['status']['online'];
-	$hotspot['street'] = $miner_data['data']['geocode']['short_street'];
+        $hotspot['status'] = $miner_data['data']['status']['online'];
+        $hotspot['street'] = $miner_data['data']['geocode']['short_street'];
         $hotspot['city'] = $miner_data['data']['geocode']['long_city'];
         $hotspot['state'] = $miner_data['data']['geocode']['long_state'];
         $hotspot['country'] = $miner_data['data']['geocode']['long_country'];
@@ -599,27 +613,33 @@ if (filter_var($validator_ip, FILTER_VALIDATE_IP)) {
             $minor_version = (int) substr($version_raw, 2, 2);
             $subversion = (int) substr($version_raw, 4, 4);
             $validator['address'] = $validator_data['data'][0]['address'];
-            $validator['ip_address'] = $validator_data['data'][0]['ip_address_data'][0]['ip_address'];
-            $validator['port'] = $validator_data['data'][0]['ip_address_data'][0]['port'];
+            if (!is_null($validator_data['data'][0]['ip_address_data'])) {
+                $validator['ip_address'] = $validator_data['data'][0]['ip_address_data'][0]['ip_address'];
+                $validator['port'] = $validator_data['data'][0]['ip_address_data'][0]['port'];
+            } else {
+                $validator['ip_address'] = $unix_utils->ip_data['ip_address'];
+                $validator['port'] = $unix_utils->ip_data['port'];
+            }
             $validator['name'] = $validator_name;
             $validator['name_standard'] = $validator_name_std;
             $validator['owner'] = $validator_data['data'][0]['owner'];
             $validator['version'] = $major_version . '.' . $minor_version . '.' . $subversion;
             $validator['ping_time']  = $ping_time . 'ms';
             $validator['ping_time_raw']  = $ping_time;
-            print_data($validator, 'Validator Data');
+            print_data($validator, 'Validator Data from Helium API');
         }
     }
 }
 if ($hotspot && $validator) {
     $validator_geoip_data = $miner->get_geo_ip_data_ipapi($validator_ip, $helium_api);
-    print_data($validator_geoip_data, 'Validator GeoIP Data');
+    print_data($validator_geoip_data, 'Validator GeoIP Data from https://ipapi.co');
     $distance = $miner->distance_between_points($hotspot['latitude'], $hotspot['longitude'],
         $validator_geoip_data['latitude'], $validator_geoip_data['longitude']);
     $validator['distance'] = $distance;
     $validator_geoip_data['distance'] = $distance;
     if (-1 == $ping_time) {
-	    echo "\e[1m\e[4mWarning:\e[0m Validator did not respond to ping request. Use distance as guide.\n";
+        echo "\e[1m\e[4mWarning:\e[0m Validator did not respond to ping request. Use distance as guide.\n";
+        echo "Some host companies such as Amazon Web Services and Google do not allow pings to servers.\n";
     }
     echo "Distance between hotspot and validator: {$distance}km Ping time: {$ping_time}ms Version: {$validator['version']}\n";
 }
