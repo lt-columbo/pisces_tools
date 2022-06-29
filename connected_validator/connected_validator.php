@@ -285,6 +285,7 @@ class unixUtils {
         // tcp        0      0 192.168.30.30:60780     104.237.209.107:8080    ESTABLISHED
         // tcp        0      0 10.0.0.13:38080         144.202.67.195:443      ESTABLISHED
         $ip = false;
+        $ip_match = false;
         $port = false;
         $cmd = 'netstat -atn | grep ":8080\s.* ESTABLISHED"';
         $cmd_result = $this->run_command($cmd, $cmd_output);
