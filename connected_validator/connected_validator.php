@@ -592,7 +592,9 @@ if ($miner_address_key) {
 }
 
 $validator_ip = $unix_utils->netstat_atn();
-echo "Validator ip = $validator_ip\n";
+if ($validator_ip) {
+  echo "Validator ip = $validator_ip\n";
+}
 
 if (filter_var($validator_ip, FILTER_VALIDATE_IP)) {
     echo "Pinging $validator_ip ... wait\n";
