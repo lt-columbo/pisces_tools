@@ -26,7 +26,7 @@
 //  This script gathers information on the connected validator a Helium hotspot is connected to.
 //  This is useful for seeing how close the validator and hotspot are and how long it takes to
 //  send and receive data. It uses the
-//    1. docker miner command to get miner address
+//    1. docker miner command to get miner address (requires sudo)
 //    2. uses this address to connect to Helium hotspot_for_address api to gather geographic data
 //    3. finds the connected validator ip address using netstat
 //    4. attempts to ping validator and get round trip time.
@@ -34,18 +34,17 @@
 //    6. Uses Helium validator_for_address api to gather validator data
 //    7. Uses geographic ip data service ipapi.co to attempt to retrieve geographic
 //       data for validator ip.
-//    8. Finally displays a summary of this data for you to make a decision on whether to
+//    8. Finally, displays a summary of this data for you to make a decision on whether to
 //        restart the miner with 'sudo docker restart miner' command
 //
-//  A caveat in using this tool is that many validatorss seem to be located at AWS (Amazon Web
+//  A caveat in using this tool is that many validators seem to be located at AWS (Amazon Web
 //   Services) and thos validators do not respond to ping requests.
 // -------------------------------------------------------------------------------------------------
 
 
-// change to do netstat, trackip address changes
 define('PING_COUNT', 6);
 define('PING_INTERVAL', 1);
-$version = '2022071700';
+$version = '2022071800';
 $console_log_filename = "/home/pi/hnt/miner/log/console.log";
 
 // script log
@@ -304,7 +303,7 @@ class unixUtils {
     // run netstat command to find the possible validator ip we
     // are connected to. Return the ip or false on failure
     // This returns an array of object validator_connections
-    // which is all connections on 8080, one of which is the
+    // which is all connections on 8080 or 8081, one of which is the
     // validator - will be determined by calls to tac_console_log
     // ----------------------------------------------------------
     public function netstat_atn() {
@@ -321,7 +320,7 @@ class unixUtils {
         if (is_array($cmd_output) && 0 < sizeof($cmd_output)) {
             $i = 0;
             do {
-                $ip_match = preg_match('/^tcp.+\s+(\d+\.\d+\.\d+\.\d+)\:\d+\s+(\d+\.\d+\.\d+\.\d+):(8080)\s.*ESTABLISHED$/', $cmd_output[$i], $matches);
+                $ip_match = preg_match('/^tcp.+\s+(\d+\.\d+\.\d+\.\d+)\:\d+\s+(\d+\.\d+\.\d+\.\d+):(808[0|1])\s.*ESTABLISHED$/', $cmd_output[$i], $matches);
                 $i++;
                 if ($ip_match) {
                     $connected_8080 = new validator_connections('', $matches[2], $matches[3], false);
@@ -634,7 +633,7 @@ if (0 < sizeof($possible_validator_ips)) {
     echo "Validator ip = $validator->ip4\n";
 }
 
-if (!empty($validator) && filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
+if (is_object($validator) && filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
     echo "Pinging $validator->ip4 ... wait\n";
     $ping_time = $unix_utils->ping($validator->ip4, 4, 4, $logger);
     if (0 < $ping_time) {
@@ -670,7 +669,7 @@ if (!empty($validator) && filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
         }
     }
 }
-if ($hotspot && !empty($validator)) {
+if ($hotspot && is_object($validator)) {
     $validator_geoip_data = $miner->get_geo_ip_data_ipapi($validator->ip4, $helium_api);
     print_data($validator_geoip_data, 'Validator GeoIP Data from https://ipapi.co');
     $distance = $miner->distance_between_points($hotspot['latitude'], $hotspot['longitude'],
