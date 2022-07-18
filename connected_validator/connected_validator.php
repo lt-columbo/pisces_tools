@@ -39,8 +39,6 @@
 //
 //  A caveat in using this tool is that many validatorss seem to be located at AWS (Amazon Web
 //   Services) and thos validators do not respond to ping requests.
-//
-// 20020717: Updated to account for 3 connections to port 8080 from 20220714 miner update.
 // -------------------------------------------------------------------------------------------------
 
 
@@ -636,7 +634,7 @@ if (0 < sizeof($possible_validator_ips)) {
     echo "Validator ip = $validator->ip4\n";
 }
 
-if (filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
+if (!empty($validator) && filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
     echo "Pinging $validator->ip4 ... wait\n";
     $ping_time = $unix_utils->ping($validator->ip4, 4, 4, $logger);
     if (0 < $ping_time) {
@@ -672,7 +670,7 @@ if (filter_var($validator->ip4, FILTER_VALIDATE_IP)) {
         }
     }
 }
-if ($hotspot && $validator) {
+if ($hotspot && !empty($validator)) {
     $validator_geoip_data = $miner->get_geo_ip_data_ipapi($validator->ip4, $helium_api);
     print_data($validator_geoip_data, 'Validator GeoIP Data from https://ipapi.co');
     $distance = $miner->distance_between_points($hotspot['latitude'], $hotspot['longitude'],
