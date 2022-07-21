@@ -8,5 +8,5 @@ chmod ugo+x /home/admin/connected_validator.php
 apt install -y curl php-cli php7.3-curl
 chown admin:admin /home/admin/connected_validator.php
 echo "---------------------------------------------------------------------------"
-echo " To run: type ./connected_validator_info.php"
+echo " To run: type ./connected_validator.php"
 echo "----------------------------------------------------------------------------"
