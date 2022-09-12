@@ -1,6 +1,6 @@
 # Pisces Miner gateway_mfr provision Docker image
 
-The image is a gzipped tar file even though it's not named using the usual convention or having .tar in its name.
+The image is a gzipped tar file even though it's not named using the usual convention of having .tar in its name.
 
 **To download to your miner**
 
