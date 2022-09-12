@@ -1,5 +1,7 @@
 # Pisces Miner gateway_mfr provision Docker image
 
+The image is a gzipped tar file even though it's not named using the usual convention or having .tar in its name.
+
 **To download to your miner**
 
 Here we use git, it will pull a directory down. Inside the directory will be two files, this one you are reading (README.md) and the gateway_mfr image.
