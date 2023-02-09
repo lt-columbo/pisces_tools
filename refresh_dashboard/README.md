@@ -8,13 +8,13 @@ However, sometimes one wants to know right now. So this script will run the dash
 **How To Use**  
 There are two ways to run this script.  
 **[1] Install it:**  
-wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/install.sh -O - | sudo bash  
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/install.sh -O - | sudo bash  
 
 To run:  
 sudo ./refresh-dash.sh
 
 **[2] Run from cloud (without install):**  
-wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
+sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O - | sudo bash   
 
 **Sudo Required**  
 This script requires sudo privileges because it 1) uses the monitor_scripts to run privileged commands and 2) those commands write to the dashboard cached files.  
