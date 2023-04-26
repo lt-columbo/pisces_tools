@@ -20,10 +20,12 @@ fi
 wget "https://github.com/helium/gateway-rs/releases/download/$GATEWAY_VERSION/$GATEWAY_FILE" -P "$GATEWAY_RS_PATH/"
 
 # Unzip the gz file into the GATEWAY_RS_PATH
-tar -xvf "$GATEWAY_RS_PATH/$GATEWAY_FILE" -C "$GATEWAY_RS_PATH/" helium_gateway
+tar -xvf "$GATEWAY_RS_PATH/$GATEWAY_FILE" -C /tmp helium_gateway
 te=$?
 if [ "$te" -eq 0 ]; then  
 
+   mv /tmp/helium_gateway "$GATEWAY_RS_PATH/"
+   
    # Delete the gz file 
    rm "$GATEWAY_RS_PATH/$GATEWAY_FILE"
 
