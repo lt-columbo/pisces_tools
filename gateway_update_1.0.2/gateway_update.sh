@@ -16,7 +16,8 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-# Download the gateway_rs program into the GATEWAY_RS_PATH
+# Download the gateway_rs program into /tmp then move just the helium_gateway so we don't change settings.toml 
+# Region in settigns and we don't know it
 wget "https://github.com/helium/gateway-rs/releases/download/$GATEWAY_VERSION/$GATEWAY_FILE" -P "$GATEWAY_RS_PATH/"
 
 # Unzip the gz file into the GATEWAY_RS_PATH
