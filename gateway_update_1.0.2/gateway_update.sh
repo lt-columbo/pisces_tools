@@ -7,6 +7,7 @@ FIRMWARE_VERSION="0.60"
 GATEWAY_RS_PATH="/etc/helium_gateway"
 GATEWAY_VERSION="v1.0.2"
 GATEWAY_FILE="helium-gateway-1.0.2-armv7-unknown-linux-musleabihf.tar.gz"
+DISTRIB_DATE="2023.04.14"
 
 echo "Updating to $GATEWAY_VERSION"
 
@@ -33,7 +34,7 @@ service helium start
 echo "Helium_gateway running and updated, or so we think. See actual version below."
 
 # Update the lsb_release file
-echo "DISTRIB_RELEASE=2023.04.14" | sudo tee /etc/lsb_release
+echo "DISTRIB_RELEASE=$DISTRIB_DATE" | sudo tee /etc/lsb_release
 
 # Show version and running status
 version=$(/etc/helium_gateway/helium_gateway --version)
