@@ -21,23 +21,26 @@ wget "https://github.com/helium/gateway-rs/releases/download/$GATEWAY_VERSION/$G
 
 # Unzip the gz file into the GATEWAY_RS_PATH
 tar -xvf "$GATEWAY_RS_PATH/$GATEWAY_FILE" -C "$GATEWAY_RS_PATH/" helium_gateway
+te=$?
+if [ "$te" -eq 0 ]; then  
 
-# Delete the gz file 
-rm "$GATEWAY_RS_PATH/$GATEWAY_FILE"
+   # Delete the gz file 
+   rm "$GATEWAY_RS_PATH/$GATEWAY_FILE"
 
-# Stop the service of helium
-service helium stop 
+   # Stop the service of helium
+   service helium stop 
 
-# Start up the service
-service helium start
+   # Start up the service
+   service helium start
 
-echo "Helium_gateway running and updated, or so we think. See actual version below."
+   echo "Helium_gateway running and updated, or so we think. See actual version below."
 
-# Update the lsb_release file
-echo "DISTRIB_RELEASE=$DISTRIB_DATE" | sudo tee /etc/lsb_release
+   # Update the lsb_release file
+   echo "DISTRIB_RELEASE=$DISTRIB_DATE" | sudo tee /etc/lsb_release
+fi
 
 # Show version and running status
 version=$(/etc/helium_gateway/helium_gateway --version)
 echo "Helium Gateway version now on system is $version"
-echo "Run command below to make sure gateway is running"
-echo "sudo systemctl status helium"
+echo "VERIFY Helium_gateway is running with command below:"
+echo "systemctl status helium"
