@@ -39,5 +39,5 @@ echo "DISTRIB_RELEASE=$DISTRIB_DATE" | sudo tee /etc/lsb_release
 # Show version and running status
 version=$(/etc/helium_gateway/helium_gateway --version)
 echo "Helium Gateway version now on system is $version"
-echo "Check below to make sure gateway is running"
-systemctl status helium
+echo "Run command below to make sure gateway is running"
+echo "sudo systemctl status helium"
