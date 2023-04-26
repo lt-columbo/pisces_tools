@@ -1,6 +1,6 @@
 # Updates Helium Gateway to version 1.0.2
 
-### To update your miner
+### To update your miner via ssh
 
 **sudo wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/gateway_update_1.0.2/gateway_update.sh -O - | sudo bash**
 
