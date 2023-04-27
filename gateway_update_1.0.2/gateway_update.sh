@@ -1,8 +1,5 @@
 #!/bin/bash
 
-old_version=$(/etc/helium_gateway/helium_gateway --version)
-echo "Helium Gateway version installed now is $old_version"
-
 FIRMWARE_VERSION="0.60"
 GATEWAY_RS_PATH="/etc/helium_gateway"
 GATEWAY_VERSION="v1.0.2"
@@ -20,6 +17,9 @@ then
     echo "directory $GATEWAY_RS_PATH DOES NOT exists." 
     exit 9999 # die with error code 9999 
 fi
+
+old_version=$(/etc/helium_gateway/helium_gateway --version)
+echo "Helium Gateway version installed now is $old_version"
 
 echo "Updating to $GATEWAY_VERSION"
 
