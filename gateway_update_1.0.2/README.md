@@ -10,7 +10,7 @@
 
 **sudo wget http://pisces-firmware.sidcloud.cn/latest/??/update.sh -O - | sudo bash**
 
-### Change ?? in above command to AU.CN,EU,IN,US etc i.e. your Region
+### Change ?? in above command to AU,CN,EU,IN,US etc i.e. your Region
 
 ### Link to [Helium Gateway Release](https://github.com/helium/gateway-rs/releases/tag/v1.0.2) notes
 
