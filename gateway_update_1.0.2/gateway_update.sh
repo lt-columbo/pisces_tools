@@ -9,12 +9,19 @@ GATEWAY_VERSION="v1.0.2"
 GATEWAY_FILE="helium-gateway-1.0.2-armv7-unknown-linux-musleabihf.tar.gz"
 DISTRIB_DATE="2023.04.14"
 
-echo "Updating to $GATEWAY_VERSION"
-
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root - use sudo in front" 
    exit 1
 fi
+
+if [ ! -d "$GATEWAY_RS_PATH" ] 
+then 
+    echo "Does not appear that gateway 1.0.0 is installed because"       
+    echo "directory $GATEWAY_RS_PATH DOES NOT exists." 
+    exit 9999 # die with error code 9999 
+fi
+
+echo "Updating to $GATEWAY_VERSION"
 
 # Download the gateway_rs program into $GATEWAY_RS_PATH 
 wget "https://github.com/helium/gateway-rs/releases/download/$GATEWAY_VERSION/$GATEWAY_FILE" -P "$GATEWAY_RS_PATH/"
