@@ -1,4 +1,5 @@
 #!/bin/bash
+# Make sure dashboard is installed
 cd /etc/monitor-scripts
 te=$?
 if [ "$te" -eq 0 ]; then
