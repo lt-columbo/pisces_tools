@@ -1,6 +1,11 @@
 #!/bin/bash
 # Updated for Solana helium_gateway 1.0.0
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root - use sudo in front i.e. sudo ${0}" 
+   exit 1
+fi
+
 source /etc/monitor-scripts/dashboard.ini
 
 grep_version_pat='https://github.com/helium/gateway-rs/releases/expanded_assets/v[0-9]+\.[0-9]+\.[0-9]+'
