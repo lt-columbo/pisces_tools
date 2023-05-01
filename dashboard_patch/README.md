@@ -26,7 +26,7 @@ Each of the scripts updated get backed up in two ways:
   - /etc/monitor-scripts/miner-version-check.sh.old
   - /etc/monitor-scripts/pubkeys.sh.old
 
-**To run the update_dash.sh script to refresh the dashboard cache**  
+**Anytime you desire you may refresh the dashboard cache. To do this: run the update_dash.sh script**  
 
 Run at any time:
 sudo sh /etc/monitor-scripts/refresh_dash.sh
