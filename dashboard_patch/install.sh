@@ -25,6 +25,10 @@ if [ "$te" -eq 0 ]; then
   if [ ! -f "miner-version-check.sh.old" ]; then
     cp --preserve miner-version-check.sh miner-version-check.sh.old
   fi
+    
+  if [ ! -f "peer-list.sh.old" ]; then
+    cp --preserve peer-list.sh peer-list.sh.old
+  fi 
   
   if [ ! -f "pubkeys.sh.old" ]; then
     cp --preserve pubkeys.sh pubkeys.sh.old
@@ -35,6 +39,7 @@ if [ "$te" -eq 0 ]; then
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/info-height.sh -O /etc/monitor-scripts/info-height.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-update.sh -O /etc/monitor-scripts/miner-update.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-version-check.sh -O /etc/monitor-scripts/miner-version-check.sh
+  wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/peer-list.sh -O /etc/monitor-scripts/peer-list.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/pubkeys.sh -O /etc/monitor-scripts/pubkeys.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O /etc/monitor-scripts/refresh-dash.sh
   
@@ -42,8 +47,9 @@ if [ "$te" -eq 0 ]; then
   chmod ugo+x /etc/monitor-scripts/helium-statuses.sh
   chmod ugo+x /etc/monitor-scripts/info-height.sh
   chmod ugo+x /etc/monitor-scripts/miner-update.sh
-  chmod ugo+x /etc/monitor-scripts/pubkeys.sh
   chmod ugo+x /etc/monitor-scripts/miner-version-check.sh
+  chmod ugo+x /etc/monitor-scripts/peer-list.sh
+  chmod ugo+x /etc/monitor-scripts/pubkeys.sh
   chmod ugo+x /etc/monitor-scripts/refresh-dash.sh
   # Update the miner status
    echo "Refreshing cached dashboard status values"
