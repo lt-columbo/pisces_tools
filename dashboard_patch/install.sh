@@ -62,11 +62,13 @@ if [ "$te" -eq 0 ]; then
   /etc/monitor-scripts/refresh-dash.sh
   # if docker miner is running, remove it
   echo $(date -u) "Checking if need to remove docker miner"
-  docker = $(docker ps --format "{{.Image}}" --filter "name=miner" | grep -Po "miner-arm64")
-  if [ "${docker}" -eq "miner-arm64"} ]; then
-    docker stop miner  
+  docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
+  docker=$(echo $docker | grep -Po "miner-arm64")
+  if [ $docker = "miner-arm64" ]; then
+    docker stop miner
     docker rm miner
     echo $(date -u) "Removed docker miner"
   fi
+
   echo $(date -u) 'Miner patched for helium_gateway. Check for miner updates now by looking at footer of this page.'
 fi
