@@ -35,3 +35,7 @@ echo $lat > ${CFG_FN_LAT}
 echo $lng > ${CFG_FN_LNG}
 echo $height > ${CFG_FN_CUR_BLKHGT}
 echo $recent_activity > ${CFG_FN_RECENT_ACTIVITY}
+
+if [ -f "/etc/monitor-scripts/dash-hook.sh" ]; then
+   /etc/monitor-scripts/dashboard-hook.sh
+fi
