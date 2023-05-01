@@ -3,7 +3,7 @@
 cd /etc/monitor-scripts
 te=$?
 if [ "$te" -eq 0 ]; then
-  echo "Backing up existing scripts (if not already done)"
+  echo $(date -u) "Backing up existing scripts (if not already done)"
   # only backup files first time
   if [ ! -f "~admin/monitor-scripts.tar.bz2" ]; then
     tar cjf ~admin/monitor-scripts.tar.bz2 helium-statuses.sh info-height.sh miner-update.sh miner-version-check.sh peer-list.sh pubkeys.sh
@@ -33,7 +33,7 @@ if [ "$te" -eq 0 ]; then
   if [ ! -f "pubkeys.sh.old" ]; then
     cp --preserve pubkeys.sh pubkeys.sh.old
   fi  
-  echo "Downloading patches"
+  echo $(date -u) "Downloading patches"
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/dashboard.ini -O /etc/monitor-scripts/dashboard.ini
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/helium-statuses.sh -O /etc/monitor-scripts/helium-statuses.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/info-height.sh -O /etc/monitor-scripts/info-height.sh
@@ -52,6 +52,14 @@ if [ "$te" -eq 0 ]; then
   chmod ugo+x /etc/monitor-scripts/pubkeys.sh
   chmod ugo+x /etc/monitor-scripts/refresh-dash.sh
   # Update the miner status
-   echo "Refreshing cached dashboard status values"
+  echo $(date -u) "Refreshing cached dashboard status values"
   /etc/monitor-scripts/refresh-dash.sh
+  echo $(date -u) "Checking if need to remove docker miner"
+  docker = $(docker ps --format "{{.Image}}" --filter "name=miner" | grep -Po "miner-arm64")
+  if [ "${docker}" -eq "miner-arm64"} ]; then
+    docker stop miner  
+    docker rm miner
+    echo $(date -u) "Removed docker miner"
+  fi
+  echo $(date -u) 'Miner patched for helium_gateway. Check for miner updates now by looking at footer of this page.'
 fi
