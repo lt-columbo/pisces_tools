@@ -6,8 +6,12 @@ if [ "$te" -eq 0 ]; then
   echo $(date -u) "Backing up existing scripts (if not already done)"
   # only backup files first time
   if [ ! -f "~admin/monitor-scripts.tar.bz2" ]; then
-    tar cjf ~admin/monitor-scripts.tar.bz2 helium-statuses.sh info-height.sh miner-update.sh miner-version-check.sh peer-list.sh pubkeys.sh
+    tar cjf ~admin/monitor-scripts.tar.bz2 /etc/monitor-scripts/
     chown admin:admin ~admin/monitor-scripts.tar.bz2
+  fi
+  
+  if [ ! -f "auto-maintain.sh.old" ]; then
+    cp --preserve auto-maintain.sh auto-maintain.sh.old
   fi
   
   if [ ! -f "helium-statuses.sh.old" ]; then
@@ -35,6 +39,7 @@ if [ "$te" -eq 0 ]; then
   fi  
   echo $(date -u) "Downloading patches"
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/dashboard.ini -O /etc/monitor-scripts/dashboard.ini
+  wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/auto-maintain.sh -O /etc/monitor-scripts/auto-maintain.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/helium-statuses.sh -O /etc/monitor-scripts/helium-statuses.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/info-height.sh -O /etc/monitor-scripts/info-height.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-update.sh -O /etc/monitor-scripts/miner-update.sh
@@ -44,6 +49,7 @@ if [ "$te" -eq 0 ]; then
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O /etc/monitor-scripts/refresh-dash.sh
   
   # set to executable
+  chmod ugo+x /etc/monitor-scripts/auto-maintain.sh
   chmod ugo+x /etc/monitor-scripts/helium-statuses.sh
   chmod ugo+x /etc/monitor-scripts/info-height.sh
   chmod ugo+x /etc/monitor-scripts/miner-update.sh
@@ -54,6 +60,7 @@ if [ "$te" -eq 0 ]; then
   # Update the miner status
   echo $(date -u) "Refreshing cached dashboard status values"
   /etc/monitor-scripts/refresh-dash.sh
+  # if docker miner is running, remove it
   echo $(date -u) "Checking if need to remove docker miner"
   docker = $(docker ps --format "{{.Image}}" --filter "name=miner" | grep -Po "miner-arm64")
   if [ "${docker}" -eq "miner-arm64"} ]; then
