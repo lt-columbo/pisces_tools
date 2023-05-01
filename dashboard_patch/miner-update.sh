@@ -33,6 +33,8 @@ if [[ ${service} == 'start' ]]; then
       rm "/tmp/${helium_filename}"
 
       # Stop the service of helium
+      docker stop miner  
+      docker rm miner
       echo $(date -u) "Stopping/Restarting ${CFG_HELIUM_SERVICE_NAME} service"  >> ${CFG_FN_MINER_UPDATE_LOG}
       service ${CFG_HELIUM_SERVICE_NAME} stop >> ${CFG_FN_MINER_UPDATE_LOG} 
 
