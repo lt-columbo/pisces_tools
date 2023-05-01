@@ -4,6 +4,7 @@ if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root - use sudo in front i.e. sudo ${0}" 
    exit 1
 fi
+
 source /etc/monitor-scripts/dashboard.ini
 service=$(cat ${CFG_FN_MINER_UPDATE} | tr -d '\n')
 version=$(cat ${CFG_FN_LATEST_MINER_VER} | tr -d '\n')
