@@ -32,9 +32,14 @@ if [[ ${service} == 'start' ]]; then
       echo $(date -u) 'Removing downloaded archive of new firmware.'  >> ${CFG_FN_MINER_UPDATE_LOG}
       rm "/tmp/${helium_filename}"
 
+      echo $(date -u) "Checking if need to remove docker miner"  >> ${CFG_FN_MINER_UPDATE_LOG}
+      docker = $(docker ps --format "{{.Image}}" --filter "name=miner" | grep -Po "miner-arm64")
+      if [ "${docker}" -*eq "miner-arm64"} ]; then
+        docker stop miner  
+        docker rm miner
+        echo $(date -u) "Removed docker miner"  >> ${CFG_FN_MINER_UPDATE_LOG}
+      }
       # Stop the service of helium
-      docker stop miner  
-      docker rm miner
       echo $(date -u) "Stopping/Restarting ${CFG_HELIUM_SERVICE_NAME} service"  >> ${CFG_FN_MINER_UPDATE_LOG}
       service ${CFG_HELIUM_SERVICE_NAME} stop >> ${CFG_FN_MINER_UPDATE_LOG} 
 
