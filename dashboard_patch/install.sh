@@ -6,7 +6,7 @@ if [ "$te" -eq 0 ]; then
   echo "Backing up existing scripts (if not already done)"
   # only backup files first time
   if [ ! -f "~admin/monitor-scripts.tar.bz2" ]; then
-    tar cjf ~admin/monitor-scripts.tar.bz2 helium-statuses.sh info-height.sh miner-update.sh miner-version-check.sh pubkeys.sh
+    tar cjf ~admin/monitor-scripts.tar.bz2 helium-statuses.sh info-height.sh miner-update.sh miner-version-check.sh peer-list.sh pubkeys.sh
     chown admin:admin ~admin/monitor-scripts.tar.bz2
   fi
   
