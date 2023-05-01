@@ -32,11 +32,16 @@ if [ "$te" -eq 0 ]; then
     
   if [ ! -f "peer-list.sh.old" ]; then
     cp --preserve peer-list.sh peer-list.sh.old
-  fi 
+  fi
   
   if [ ! -f "pubkeys.sh.old" ]; then
     cp --preserve pubkeys.sh pubkeys.sh.old
-  fi  
+  fi
+  
+  if [ ! -f "~admin/index.php.old" ]; then
+    cp --preserve /var/dashboard/public/index.php index.php.old
+    sed -i 's/?tools.php=updateminer/index.php?page=updateminer/' /var/dashboard/public/index.php
+  fi
   echo $(date -u) "Downloading patches"
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/dashboard.ini -O /etc/monitor-scripts/dashboard.ini
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/auto-maintain.sh -O /etc/monitor-scripts/auto-maintain.sh
