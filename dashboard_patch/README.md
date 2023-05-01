@@ -1,7 +1,8 @@
 # Dashboard Patch for Pisces Dashboard v0.2.9
 
-### This patch makes changes to these 6 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
+### This patch makes changes to these 7 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
 
+* auto-maintain.sh
 * helium-statuses.sh
 * info-height.sh
 * miner-update.sh
@@ -21,6 +22,7 @@ Each of the scripts updated get backed up in two ways:
 * into a unix tar file in admin home directory /home/admin/monitor-scripts.tar.bz2"
 * into files in /etc/monitor-scripts:
 
+  - /etc/monitor-scripts/auto-maintain.sh.old
   - /etc/monitor-scripts/helium-statuses.sh.old
   - /etc/monitor-scripts/info-height.sh.old
   - /etc/monitor-scripts/miner-update.sh.old
@@ -37,6 +39,7 @@ sudo sh /etc/monitor-scripts/refresh-dash.sh
 If you want to revert, you can copy these files back over or reinstall the dashboard by running the update.
 
 ***To RESTORE OLD SCRIPTS by copying the files back over***  
+- sudo cp /etc/monitor-scripts/auto-maintain.sh.old /etc/monitor-scripts/auto-maintain.sh
 - sudo cp /etc/monitor-scripts/helium-statuses.sh.old /etc/monitor-scripts/helium-statuses.sh
 - sudo cp /etc/monitor-scripts/info-height.sh.old /etc/monitor-scripts/info-height.sh
 - sudo cp /etc/monitor-scripts/miner-update.sh.old /etc/monitor-scripts/miner-update.sh
