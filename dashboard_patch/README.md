@@ -2,11 +2,11 @@
 
 ### This patch makes changes to these 5 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
 
-*helium-statuses.sh
-*info-height.sh
-*miner-update.sh
-*miner-version-check.sh
-*pubkeys.sh 
+* helium-statuses.sh
+* info-height.sh
+* miner-update.sh
+* miner-version-check.sh
+* pubkeys.sh 
 
 ### In addition it adds one new script, that allows one to refresh all of the dashboard values that get out of date and confuse things.
 
