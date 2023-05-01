@@ -10,7 +10,7 @@
 
 ### In addition it adds one new script, that allows one to refresh all of the dashboard values that get out of date and confuse things.
 
-* refresh_dash.sh
+* refresh-dash.sh
 
 # To update your miner via ssh
 
@@ -26,10 +26,10 @@ Each of the scripts updated get backed up in two ways:
   - /etc/monitor-scripts/miner-version-check.sh.old
   - /etc/monitor-scripts/pubkeys.sh.old
 
-**Anytime you desire you may refresh the dashboard cache. To do this: run the update_dash.sh script**  
+**Anytime you desire you may refresh the dashboard cache. To do this: run the refresh-dash.sh script**  
 
 Run at any time:
-sudo sh /etc/monitor-scripts/refresh_dash.sh
+sudo sh /etc/monitor-scripts/refresh-dash.sh
 
 # Undoing this Update for any reason  
 If you want to revert, you can copy these files back over or reinstall the dashboard by running the update.
