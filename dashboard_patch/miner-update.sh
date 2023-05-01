@@ -37,12 +37,14 @@ if [[ ${service} == 'start' ]]; then
       rm "/tmp/${helium_filename}"
 
       echo $(date -u) "Checking if need to remove docker miner"  >> ${CFG_FN_MINER_UPDATE_LOG}
-      docker = $(docker ps --format "{{.Image}}" --filter "name=miner" | grep -Po "miner-arm64")
-      if [ "${docker}" -eq "miner-arm64"} ]; then
-        docker stop miner  
-        docker rm miner
-        echo $(date -u) "Removed docker miner"  >> ${CFG_FN_MINER_UPDATE_LOG}
+      docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
+      docker=$(echo $docker | grep -Po "miner-arm64")
+      if [ $docker = "miner-arm64" ]; then
+         docker stop miner
+         docker rm miner
+         echo $(date -u) "Removed docker miner"
       fi
+
       # Stop the service of helium
       echo $(date -u) "Stopping/Restarting ${CFG_HELIUM_SERVICE_NAME} service"  >> ${CFG_FN_MINER_UPDATE_LOG}
       service ${CFG_HELIUM_SERVICE_NAME} stop >> ${CFG_FN_MINER_UPDATE_LOG} 
