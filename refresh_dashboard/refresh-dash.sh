@@ -24,9 +24,7 @@ echo "Miner Status"
 # miner version and latest version
 echo "Miner version, latest version available"
 /etc/monitor-scripts/miner-version-check.sh
-# Peer list at bottom of home page
-echo "Peer list"
-/etc/monitor-scripts/peer-list.sh
+
 # Serial Number
 echo "Serial Number"
 /etc/monitor-scripts/sn-check.sh
