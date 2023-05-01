@@ -34,4 +34,12 @@ if [ "$te" -eq 0 ]; then
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-update.sh -O /etc/monitor-scripts/miner-update.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-version-check.sh -O /etc/monitor-scripts/miner-version-check.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/pubkeys.sh -O /etc/monitor-scripts/pubkeys.sh
+  wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/refresh_dashboard/refresh-dash.sh -O etc/monitor-scripts/refresh-dash.sh
+  # set to executable
+  chmod ugo+x etc/monitor-scripts/refresh-dash.sh
+  chmod ugo+x /etc/monitor-scripts/helium-statuses.sh
+  chmod ugo+x /etc/monitor-scripts/info-height.sh
+  chmod ugo+x /etc/monitor-scripts/miner-update.sh
+  chmod ugo+x /etc/monitor-scripts/pubkeys.sh
+  chmod ugo+x /etc/monitor-scripts/miner-version-check.sh
 fi
