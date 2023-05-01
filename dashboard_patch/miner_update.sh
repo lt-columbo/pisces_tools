@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updated for Solana helium_gateway 1.0.0
-set -x
+
 source /etc/monitor-scripts/dashboard.ini
 service=$(cat ${CFG_FN_MINER_UPDATE} | tr -d '\n')
 version=$(cat ${CFG_FN_LATEST_MINER_VER} | tr -d '\n')
