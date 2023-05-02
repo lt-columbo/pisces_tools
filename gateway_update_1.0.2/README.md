@@ -13,5 +13,3 @@
 ### Change ?? in above command to AU,CN,EU,IN,US etc i.e. your Region
 
 ### Link to [Helium Gateway Release](https://github.com/helium/gateway-rs/releases/tag/v1.0.2) notes
-
-
