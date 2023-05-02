@@ -14,8 +14,10 @@ version_pat='([0-9]+\.[0-9]+\.[0-9]+)'
 latest='unknown'
 version_assets=$(curl -s ${CFG_GITHUB_MINER_REPO} | grep -Po ${grep_version_pat})
 if [[ $version_assets =~ ${version_pat} ]]; then
-  latest=${BASH_REMATCH[1]}
-fi  
+  latest=($(for vers in "${BASH_REMATCH[*]}"; do echo "${vers}"; done | sort -unr))
+  latest=${latest[0]}
+fi
+
 echo ${latest} > ${CFG_FN_LATEST_MINER_VER}
 
 current="unknown"
