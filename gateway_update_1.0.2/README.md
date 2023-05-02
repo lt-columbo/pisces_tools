@@ -1,6 +1,6 @@
 # Updates Helium Gateway to version 1.0.2
 
-### Still being tested, be prepared to revert using script shown below (update.sh). Understand how to use that script before running this script.
+### Understand how to use that script before running this script.
 
 ### To update your miner via ssh
 
