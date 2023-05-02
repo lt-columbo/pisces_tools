@@ -34,6 +34,8 @@ Each of the scripts updated get backed up in two ways:
   - /etc/monitor-scripts/peer-list.sh.old
   - /etc/monitor-scripts/pubkeys.sh.old
 
+# You can indenity the patch has been applied by Miner Height showing as 922222222
+
 **Anytime you desire you may refresh the dashboard cache. To do this: run the refresh-dash.sh script**  
 
 Run at any time:
