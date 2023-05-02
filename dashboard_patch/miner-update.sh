@@ -39,7 +39,7 @@ if [[ ${service} == 'start' ]]; then
       echo $(date -u) "Checking if need to remove docker miner"  >> ${CFG_FN_MINER_UPDATE_LOG}
       docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
       docker=$(echo $docker | grep -Po "miner-arm64")
-      if [ $docker = "miner-arm64" ]; then
+      if [ "$docker" = "miner-arm64" ]; then
          docker stop miner
          docker rm miner
          echo $(date -u) "Removed docker miner"
