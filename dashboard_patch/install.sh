@@ -39,7 +39,7 @@ if [ "$te" -eq 0 ]; then
   fi
   
   if [ ! -f "~admin/index.php.old" ]; then
-    cp --preserve /var/dashboard/public/index.php index.php.old
+    cp --preserve /var/dashboard/public/index.php ~admin/index.php.old
     sed -i 's/?tools.php=updateminer/index.php?page=updateminer/' /var/dashboard/public/index.php
   fi
   echo $(date -u) "Downloading patches"
