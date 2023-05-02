@@ -8,7 +8,11 @@
 * miner-update.sh
 * miner-version-check.sh
 * peer-list.sh
-* pubkeys.sh 
+* pubkeys.sh
+
+### This patch makes changes to one file in the dashboard in /var/dashboard/public/index.php that corrects the link when 'update available' shows to point to the update miner page. 
+
+* index.php
 
 ### In addition it adds one new script, that allows one to refresh all of the dashboard values that get out of date and confuse things.
 
@@ -46,3 +50,4 @@ If you want to revert, you can copy these files back over or reinstall the dashb
 - sudo cp /etc/monitor-scripts/miner-version-check.sh.old /etc/monitor-scripts/miner-version-check.sh
 - sudo cp /etc/monitor-scripts/peer-list.sh.old /etc/monitor-scripts/peer-list.sh
 - sudo cp /etc/monitor-scripts/pubkeys.sh.old /etc/monitor-scripts/pubkeys.sh
+- sudo cp ~admin/index.php.old /var/dashboard/public/index.php
