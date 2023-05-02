@@ -1,10 +1,11 @@
 # Dashboard Patch for Pisces Dashboard v0.2.9
 
-### This patch makes changes to these 7 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
+### This patch makes changes to these 8 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
 
 * auto-maintain.sh
 * helium-statuses.sh
 * info-height.sh
+* miner.sh
 * miner-update.sh
 * miner-version-check.sh
 * peer-list.sh
@@ -29,6 +30,7 @@ Each of the scripts updated get backed up in two ways:
   - /etc/monitor-scripts/auto-maintain.sh.old
   - /etc/monitor-scripts/helium-statuses.sh.old
   - /etc/monitor-scripts/info-height.sh.old
+  - /etc/monitor-scripts/miner.sh.old
   - /etc/monitor-scripts/miner-update.sh.old
   - /etc/monitor-scripts/miner-version-check.sh.old
   - /etc/monitor-scripts/peer-list.sh.old
@@ -48,6 +50,7 @@ If you want to revert, you can copy these files back over or reinstall the dashb
 - sudo cp /etc/monitor-scripts/auto-maintain.sh.old /etc/monitor-scripts/auto-maintain.sh
 - sudo cp /etc/monitor-scripts/helium-statuses.sh.old /etc/monitor-scripts/helium-statuses.sh
 - sudo cp /etc/monitor-scripts/info-height.sh.old /etc/monitor-scripts/info-height.sh
+- sudo cp /etc/monitor-scripts/miner.sh.old /etc/monitor-scripts/miner.sh
 - sudo cp /etc/monitor-scripts/miner-update.sh.old /etc/monitor-scripts/miner-update.sh
 - sudo cp /etc/monitor-scripts/miner-version-check.sh.old /etc/monitor-scripts/miner-version-check.sh
 - sudo cp /etc/monitor-scripts/peer-list.sh.old /etc/monitor-scripts/peer-list.sh
