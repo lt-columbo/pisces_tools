@@ -4,6 +4,13 @@
 # ---
 # pubkey used by helium-statuses.sh so do before it
 # ---
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root - use sudo in front i.e. sudo ${0}" 
+   exit 1
+fi
+
+source /etc/monitor-scripts/dashboard.ini
+
 # Animal name
 echo "Refreshing Pub keys, animal name"
 /etc/monitor-scripts/pubkeys.sh
@@ -20,7 +27,12 @@ echo "Internal IP Address"
 /etc/monitor-scripts/local-ip.sh
 # Miner Status
 echo "Miner Status"
-/etc/monitor-scripts/miner.sh
+miner=(cat ${CFG_FN_ONLINE_STATUS})
+if [ "$miner" == "active" ]; then
+   echo 'true' > ${CFG_FN_MINER}
+   else
+   echo 'false' > ${CFG_FN_MINER}
+fi
 # miner version and latest version
 echo "Miner version, latest version available"
 /etc/monitor-scripts/miner-version-check.sh
