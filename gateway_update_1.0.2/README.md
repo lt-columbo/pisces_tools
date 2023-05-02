@@ -8,7 +8,7 @@
 
 ### If this update fails for any reason, run the pisces installer for 0.60
 
-**sudo wget http://pisces-firmware.sidcloud.cn/latest/??/update.sh -O - | sudo bash**
+**sudo wget http://pisces-firmware.sidcloud.cn/0.60/??/update.sh -O - | sudo bash**
 
 ### Change ?? in above command to AU,CN,EU,IN,US etc i.e. your Region
 
