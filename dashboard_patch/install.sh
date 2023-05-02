@@ -69,7 +69,7 @@ if [ "$te" -eq 0 ]; then
   echo $(date -u) "Checking if need to remove docker miner"
   docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
   docker=$(echo $docker | grep -Po "miner-arm64")
-  if [ $docker = "miner-arm64" ]; then
+  if [ $docker == "miner-arm64" ]; then
     docker stop miner
     docker rm miner
     echo $(date -u) "Removed docker miner"
