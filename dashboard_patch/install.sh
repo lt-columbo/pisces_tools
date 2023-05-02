@@ -22,6 +22,10 @@ if [ "$te" -eq 0 ]; then
     cp --preserve info-height.sh info-height.sh.old
   fi
   
+  if [ ! -f "miner.old" ]; then
+    cp --preserve miner.sh miner.sh.old
+  fi
+  
   if [ ! -f "miner-update.old" ]; then
     cp --preserve miner-update.sh miner-update.sh.old
   fi
@@ -47,6 +51,7 @@ if [ "$te" -eq 0 ]; then
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/auto-maintain.sh -O /etc/monitor-scripts/auto-maintain.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/helium-statuses.sh -O /etc/monitor-scripts/helium-statuses.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/info-height.sh -O /etc/monitor-scripts/info-height.sh
+  wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner.sh -O /etc/monitor-scripts/miner.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-update.sh -O /etc/monitor-scripts/miner-update.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/miner-version-check.sh -O /etc/monitor-scripts/miner-version-check.sh
   wget https://raw.githubusercontent.com/lt-columbo/pisces_tools/main/dashboard_patch/peer-list.sh -O /etc/monitor-scripts/peer-list.sh
@@ -57,6 +62,7 @@ if [ "$te" -eq 0 ]; then
   chmod ugo+x /etc/monitor-scripts/auto-maintain.sh
   chmod ugo+x /etc/monitor-scripts/helium-statuses.sh
   chmod ugo+x /etc/monitor-scripts/info-height.sh
+  chmod ugo+x /etc/monitor-scripts/miner.sh
   chmod ugo+x /etc/monitor-scripts/miner-update.sh
   chmod ugo+x /etc/monitor-scripts/miner-version-check.sh
   chmod ugo+x /etc/monitor-scripts/peer-list.sh
