@@ -21,7 +21,7 @@ echo "External IP"
 echo "Blockchain height, Miner height ..."
 /etc/monitor-scripts/helium-statuses.sh  >/dev/null 2>/dev/null
 # info_height run by helium-statuses.sh (local height)
-# /etc/monitor-scripts/info-height.sh
+/etc/monitor-scripts/info-height.sh
 # Internal IP Address
 echo "Internal IP Address"
 /etc/monitor-scripts/local-ip.sh
