@@ -14,7 +14,7 @@ if [ "$service" == 'enabled' ]; then
   bash /etc/monitor-scripts/update-check.sh &> /dev/null
   bash /etc/monitor-scripts/miner-version-check.sh &> /dev/null
   bash /etc/monitor-scripts/helium-statuses.sh &> /dev/null
-  online_status=$(cat ${CFG_FN_ONLINE_STATUS})
+  online_status=$(cat "$CFG_FN_ONLINE_STATUS")
 
   if [[ ! "$online_status" =~ 'active' ]]; then
     echo "[$(date "$CFG_TIME_FORMAT_LOG")] Problems with ${CFG_FN_HELIUM_GATEWAY}..." >> "$CFG_FN_AUTO_MAINTAIN_LOG"
