@@ -56,10 +56,12 @@ if [ "$service" == 'start' ]; then
       if [ "$?" -ne 0 ]; then 
         settings_chg_ok=0
       fi
+      # leading \ needed for delimiter at pos 0 to sed on a=append, otherwise ack
       sed -i "\@$CFG_FIND_ECC_KEYPAIR@ a $CFG_ADD_ECC_KEYPAIR1" "$work_settings"
       if [ "$?" -ne 0 ]; then 
         settings_chg_ok=0
       fi
+      # leading \ needed for delimiter at pos 0 to sed on a=append, otherwise ack
       sed -i "\@$CFG_ADD_ECC_KEYPAIR1@ a $CFG_ADD_ECC_KEYPAIR2" "$work_settings"
       if [ "$?" -ne 0 ]; then 
         settings_chg_ok=0
