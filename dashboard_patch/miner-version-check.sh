@@ -26,4 +26,4 @@ helium_current=$("$helium_cmd" --version)
 if [[ "$helium_current" =~ $version_pat ]]; then
   current="${BASH_REMATCH[1]}"
 fi
-echo $current > $"CFG_FN_CURRENT_MINER_VER"
+echo $current > "$CFG_FN_CURRENT_MINER_VER"
