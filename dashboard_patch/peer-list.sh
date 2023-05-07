@@ -4,4 +4,4 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 source /etc/monitor-scripts/dashboard.ini
-echo ${CFG_PEER_LIST_VALUE} > /var/dashboard/statuses/peerlist
+echo "$CFG_PEER_LIST_VALUE" > "$CFG_FN_PEERLIST"
