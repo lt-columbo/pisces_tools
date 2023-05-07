@@ -52,35 +52,60 @@ if [ "$service" == 'start' ]; then
         # keypair = "ecc://i2c-0:96?slot=0"
         # onboarding = "ecc://i2c-0:96?slot=15"
         settings_chg_ok=1
+        settings="${CFG_DIR_HELIUM_GATEWAY_HOME}${CFG_FN_HELIUM_GATEWAY_SETTINGS}"
         work_settings="${CFG_WORK_DIR}${CFG_FN_HELIUM_GATEWAY_SETTINGS}"
-        echo $(date "$CFG_TIME_FORMAT_LOG") "Attempting to customize the settings file $work_settings" >>"$CFG_FN_MINER_UPDATE_LOG"
+
+        echo $(date "$CFG_TIME_FORMAT_LOG") "Attempting to customize the settings file $work_settings" >> "$CFG_FN_MINER_UPDATE_LOG"
+        # Replace the region code in new settings with one from the in place settings file
+        region_data=$(grep -Pio "$CFG_FIND_REGION_RE" "$settings")
+        region_data_new=$(grep -Pio "$CFG_FIND_REGION_RE" "$work_settings")
+        echo  $(date "$CFG_TIME_FORMAT_LOG") "Region in current settings is: $region_data" >> "$CFG_FN_MINER_UPDATE_LOG"
+        # Replace region setting in new settings with one from existing
+        sed -i "s@${region_data_new}@${region_data}@" "$work_settings"
+        # Comment out the keyfile line
         sed -i "s@${CFG_FIND_KEYFILE}@${CFG_REPLACEMENT_KEYFILE}@" "$work_settings"
         if [ "$?" -ne 0 ]; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: Replacement of '$region_data_new' with '$region_data' failed" >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
-        # leading \ needed for delimiter at pos 0 to sed on a=append, otherwise ack
+        # insert keypair line after set on keypair/onboarding in new settings file
+        # leading \ needed for delimiter other than / at pos 0 to sed on a=append, otherwise ack
         sed -i "\@$CFG_FIND_ECC_KEYPAIR@ a $CFG_ADD_ECC_KEYPAIR1" "$work_settings"
         if [ "$?" -ne 0 ]; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: Adding line '$CFG_ADD_ECC_KEYPAIR1' failed" >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
-        # leading \ needed for delimiter at pos 0 to sed on a=append, otherwise ack
+        # insert onboarding line after keypair just inserted
+        # leading \ needed for delimiter other than / at pos 0 to sed on a=append, otherwise ack
         sed -i "\@$CFG_ADD_ECC_KEYPAIR1@ a $CFG_ADD_ECC_KEYPAIR2" "$work_settings"
         if [ "$?" -ne 0 ]; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: Adding line '$CFG_ADD_ECC_KEYPAIR2' failed" >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
         # double check changes made
         echo $(date "$CFG_TIME_FORMAT_LOG") "Verifying customization to $work_settings" >>"$CFG_FN_MINER_UPDATE_LOG"
+        # Test for: Region="EU868"|"US915" etc
+        if ! grep -Fxq "$region_data" "$work_settings"; then
+          settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: '$region_data' not in new settings file " >> "$CFG_FN_MINER_UPDATE_LOG"
+        fi
+        # Test for: Comment out #keyfile line
         if ! grep -Fxq "$CFG_REPLACEMENT_KEYFILE" "$work_settings"; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: '$CFG_REPLACEMENT_KEYFILE' not in new settings file " >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
+        # Test for: Pisces keypair ecc line
         if ! grep -Fxq "$CFG_ADD_ECC_KEYPAIR2" "$work_settings"; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: '$CFG_ADD_ECC_KEYPAIR2' not in new settings file " >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
+        # Test for: Pisces onboarding ecc line
         if ! grep -Fxq "$CFG_ADD_ECC_KEYPAIR2" "$work_settings"; then
           settings_chg_ok=0
+          echo  $(date "$CFG_TIME_FORMAT_LOG") "ERROR: '$CFG_ADD_ECC_KEYPAIR2' not in new settings file " >> "$CFG_FN_MINER_UPDATE_LOG"
         fi
+
         if [ $settings_chg_ok -eq 1 ]; then
-          settings="${CFG_DIR_HELIUM_GATEWAY_HOME}${CFG_FN_HELIUM_GATEWAY_SETTINGS}"
           settings_bu=$CFG_FN_HELIUM_GATEWAY_SETTINGS_BU
           if [ ! -d "$settings_bu" ]; then
             mkdir "$settings_bu"
