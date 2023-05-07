@@ -7,8 +7,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 source /etc/monitor-scripts/dashboard.ini
-miner=(cat "$CFG_FN_ONLINE_STATUS")
-if [ "$miner" == "active" ]; then
+
+miner=$(cat "$CFG_FN_ONLINE_STATUS")
+
+if [ "$miner" == 'active' ]; then
    echo 'true' > "$CFG_FN_MINER"
    else
    echo 'false' > "$CFG_FN_MINER"
