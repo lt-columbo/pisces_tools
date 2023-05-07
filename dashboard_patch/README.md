@@ -38,7 +38,7 @@ Each of the scripts updated get backed up in two ways:
   - /etc/monitor-scripts/peer-list.sh.old
   - /etc/monitor-scripts/pubkeys.sh.old
 
-# You can indentify the patch has been applied by Miner Height showing as 922222222
+# You can identify the patch has been applied by Miner Height showing as 9YYYYJJJR (YYYY=Yyear, JJJ=Julian Date, Release No) Example: 920230720 2023=Year, 072=72nd Day of Year, 0=Release (just in case needed to indicate updates on same day)
 
 **Anytime you desire you may refresh the dashboard cache. To do this: run the refresh-dash.sh script**  
 
