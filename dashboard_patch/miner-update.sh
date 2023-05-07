@@ -42,7 +42,7 @@ if [ "$service" == 'start' ]; then
     # If extracted firmware keep going
     if [ "$te" -eq 0 ]; then
 
-      if [ "$CFG_PROCESS_SETTINGS_FILE" -wq '1' ]; then
+      if [ "$CFG_PROCESS_SETTINGS_FILE" -eq '1' ]; then
         # Use sed to edit the settings files n work_settings file to change
         # from file keypair Pisces ecc settings
         # We want to end up with something like this:
