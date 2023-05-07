@@ -11,6 +11,8 @@ source /etc/monitor-scripts/dashboard.ini
 name_pat='\"name\":\ \"([a-z]*-[a-z]*-[a-z]*)\".*$'
 key_pat='\"key\":\ \"([A-Za-z0-9]*)\".*$'
 
+# helium_gateway does not return the keys,name, onboarding
+# in any particular order
 data=$(/etc/helium_gateway/helium_gateway key info)
 
 match='amnesiac'
