@@ -8,16 +8,19 @@ fi
 
 source /etc/monitor-scripts/dashboard.ini
 
-name_pat='\"name\":\ \"([a-z]*-[a-z]*-[a-z]*)\"'
-key_pat='\"key\":\ \"([A-Za-z0-9]*)\",'
+name_pat='\"name\":\ \"([a-z]*-[a-z]*-[a-z]*)\".*$'
+key_pat='\"key\":\ \"([A-Za-z0-9]*)\".*$'
 
 data=$(/etc/helium_gateway/helium_gateway key info)
 
+match='amnesiac'
 if [[ "$data" =~ $name_pat ]]; then
   match="${BASH_REMATCH[1]}" 
 fi
 
-echo "${match}" | tr '-' ' ' > "$CFG_FN_ANIMAL_NAME"
+echo "$match" | tr '-' ' ' > "$CFG_FN_ANIMAL_NAME"
+
+match='unknown-key'
 if [[ "$data" =~ $key_pat ]]; then
   match="${BASH_REMATCH[1]}"
 fi
