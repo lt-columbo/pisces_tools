@@ -1,7 +1,7 @@
 #!/bin/bash
 # Updated for Solana helium_gateway 1.0.0
 
-if [[ $EUID -ne 0 ]]; then
+if [ $EUID -ne 0 ]; then
    echo "This script must be run as root - use sudo in front i.e. sudo ${0}" 
    exit 1
 fi
@@ -13,12 +13,12 @@ key_pat='\"key\":\ \"([A-Za-z0-9]*)\",'
 
 data=$(/etc/helium_gateway/helium_gateway key info)
 
-if [[ $data =~ $name_pat ]]; then
+if [[ "$data" =~ $name_pat ]]; then
   match="${BASH_REMATCH[1]}" 
 fi
 
-echo "${match}" | tr '-' ' ' > ${CFG_FN_ANIMAL_NAME}
-if [[ $data =~ $key_pat ]]; then
+echo "${match}" | tr '-' ' ' > "$CFG_FN_ANIMAL_NAME"
+if [[ "$data" =~ $key_pat ]]; then
   match="${BASH_REMATCH[1]}"
 fi
-echo $match > ${CFG_FN_PUBKEY}
+echo $match > "$CFG_FN_PUBKEY"
