@@ -129,7 +129,7 @@ if [ "$service" == 'start' ]; then
 
       rm "${CFG_WORK_DIR}${helium_filename}"
 
-      if ["$CFG_CHECK_REMOVE_DOCKER" -eq '1']; then
+      if [ "$CFG_CHECK_REMOVE_DOCKER" -eq '1' ]; then
         echo $(date "$CFG_TIME_FORMAT_LOG") "Checking if docker miner is installed" >>"$CFG_FN_MINER_UPDATE_LOG"
         docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
         docker=$(echo $docker | grep -Po "miner-arm64")
