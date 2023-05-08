@@ -113,9 +113,9 @@ if [ "$service" == 'start' ]; then
           settings_bu+="$CFG_FN_HELIUM_GATEWAY_SETTINGS"
           backup_fn=$(nextsuffix "$settings_bu")
           cp "$settings" "$backup_fn"
-          cp "$work_settings" "$settings"
+          mv "$work_settings" "$settings"
           echo $(date "$CFG_TIME_FORMAT_LOG") "Success. Old settings file backed up to $backup_fn" >>"$CFG_FN_MINER_UPDATE_LOG"
-          echo "Restore old settings with sudo cp $backup_fn ${CFG_DIR_HELIUM_GATEWAY_HOME}${CFG_FN_HELIUM_GATEWAY_SETTINGS}" >>"$CFG_FN_MINER_UPDATE_LOG"
+          #echo $(date "$CFG_TIME_FORMAT_LOG") "Restore old settings with sudo cp $backup_fn ${CFG_DIR_HELIUM_GATEWAY_HOME}${CFG_FN_HELIUM_GATEWAY_SETTINGS}" >>"$CFG_FN_MINER_UPDATE_LOG"
         else
           echo $(date "$CFG_TIME_FORMAT_LOG") "FAILED.  Customization of settings **FAILED** leaving existing settings" >>"$CFG_FN_MINER_UPDATE_LOG"
         fi
