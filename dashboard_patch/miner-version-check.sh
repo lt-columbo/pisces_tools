@@ -20,7 +20,7 @@ fi
 
 echo "$latest" > "$CFG_FN_LATEST_MINER_VER"
 
-current="unknown"
+current='0.0.0'
 helium_cmd="${CFG_DIR_HELIUM_GATEWAY_HOME}${CFG_FN_HELIUM_GATEWAY}"
 helium_current=$("$helium_cmd" --version)
 if [[ "$helium_current" =~ $version_pat ]]; then
