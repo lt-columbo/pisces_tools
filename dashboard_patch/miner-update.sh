@@ -129,15 +129,17 @@ if [ "$service" == 'start' ]; then
 
       rm "${CFG_WORK_DIR}${helium_filename}"
 
-      echo $(date "$CFG_TIME_FORMAT_LOG") "Checking if docker miner is installed" >>"$CFG_FN_MINER_UPDATE_LOG"
-      docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
-      docker=$(echo $docker | grep -Po "miner-arm64")
-      if [ "$docker" = "miner-arm64" ]; then
-        docker stop miner
-        docker rm miner
-        echo $(date "$CFG_TIME_FORMAT_LOG") "Docker miner was found and removed" >>"$CFG_FN_MINER_UPDATE_LOG"
-      else
-        echo $(date "$CFG_TIME_FORMAT_LOG") "Docker miner was not found" >>"$CFG_FN_MINER_UPDATE_LOG"
+      if ["$CFG_CHECK_REMOVE_DOCKER" -eq '1']; then
+        echo $(date "$CFG_TIME_FORMAT_LOG") "Checking if docker miner is installed" >>"$CFG_FN_MINER_UPDATE_LOG"
+        docker=$(docker ps --format "{{.Image}}" --filter "name=miner")
+        docker=$(echo $docker | grep -Po "miner-arm64")
+        if [ "$docker" = "miner-arm64" ]; then
+          docker stop miner
+          docker rm miner
+          echo $(date "$CFG_TIME_FORMAT_LOG") "Docker miner was found and removed" >>"$CFG_FN_MINER_UPDATE_LOG"
+        else
+          echo $(date "$CFG_TIME_FORMAT_LOG") "Docker miner was not found" >>"$CFG_FN_MINER_UPDATE_LOG"
+        fi
       fi
 
       # Stop the service of helium
