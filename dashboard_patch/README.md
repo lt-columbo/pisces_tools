@@ -46,7 +46,10 @@ Run at any time:
 sudo sh /etc/monitor-scripts/refresh-dash.sh
 
 # Undoing this Update for any reason  
-If you want to revert, you can copy these files back over or reinstall the dashboard by running the update.
+If you want to revert, you can copy these files back over or reinstall the dashboard by running the update. There is a revert script available:
+sudo /etc/monitor-scripts/revert.sh
+
+Or you can to by hand, one by one:
 
 ***To RESTORE OLD SCRIPTS by copying the files back over***  
 - sudo cp /etc/monitor-scripts/auto-maintain.sh.old /etc/monitor-scripts/auto-maintain.sh
@@ -58,3 +61,4 @@ If you want to revert, you can copy these files back over or reinstall the dashb
 - sudo cp /etc/monitor-scripts/peer-list.sh.old /etc/monitor-scripts/peer-list.sh
 - sudo cp /etc/monitor-scripts/pubkeys.sh.old /etc/monitor-scripts/pubkeys.sh
 - sudo cp ~admin/index.php.old /var/dashboard/public/index.php
+- 
