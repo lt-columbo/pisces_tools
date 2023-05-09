@@ -78,9 +78,9 @@ if [ "$te" -eq 0 ]; then
   if [ "$docker" == "miner-arm64" ]; then
     docker stop miner
     docker rm miner
-    echo $(date -u) "Removed docker miner"
+    echo $(date -u) " ... removed docker miner"
     else
-    echo $(date -u) "Docker miner not found"
+    echo $(date -u) "... docker miner not found"
   fi
 
   echo $(date -u) 'Miner patched for helium_gateway. Check for miner updates now by looking at footer of this page.'
