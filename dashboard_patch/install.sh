@@ -79,6 +79,8 @@ if [ "$te" -eq 0 ]; then
     docker stop miner
     docker rm miner
     echo $(date -u) "Removed docker miner"
+    else
+    echo $(date -u) "Docker miner not found"
   fi
 
   echo $(date -u) 'Miner patched for helium_gateway. Check for miner updates now by looking at footer of this page.'
