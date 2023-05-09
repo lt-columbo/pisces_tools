@@ -61,4 +61,3 @@ Or you can to by hand, one by one:
 - sudo cp /etc/monitor-scripts/peer-list.sh.old /etc/monitor-scripts/peer-list.sh
 - sudo cp /etc/monitor-scripts/pubkeys.sh.old /etc/monitor-scripts/pubkeys.sh
 - sudo cp ~admin/index.php.old /var/dashboard/public/index.php
-- 
