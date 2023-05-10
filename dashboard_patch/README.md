@@ -2,6 +2,8 @@
 
 # Dashboard Patch for Pisces Dashboard v0.2.9
 
+![Picture of Pisces dashboard after patched for helium_gateway](https://github.com/lt-columbo/pisces_tools/blob/main/dashboard_patch/pisces-dashboard-update-screen.png)
+
 ### Patches dashboard so the the status values show properly and the update works again
 
 ### This patch makes changes to these 8 scripts in /etc/monitor-scripts that need updating for the new helium_gateway 1.0.0+
