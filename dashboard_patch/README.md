@@ -48,8 +48,8 @@ Run at any time:
 sudo sh /etc/monitor-scripts/refresh-dash.sh
 
 # Undoing this Update for any reason  
-If you want to revert, you can copy these files back over or reinstall the dashboard by running the update. There is a revert script available:
-sudo /etc/monitor-scripts/revert.sh
+If you want to revert, you can copy these files back over or reinstall the dashboard by running the update. There is a revert script available:  
+***sudo /etc/monitor-scripts/revert.sh***
 
 Or you can to by hand, one by one:
 
