@@ -1,3 +1,5 @@
+### if you find this useful, by me a cup of coffee: https://ko-fi.com/ltcolumbo
+
 # Dashboard Patch for Pisces Dashboard v0.2.9
 
 ### Patches dashboard so the the status values show properly and the update works again
