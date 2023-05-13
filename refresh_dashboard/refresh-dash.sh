@@ -9,7 +9,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-source /etc/monitor-scripts/dashboard.ini
+#source /etc/monitor-scripts/dashboard.ini
 
 # Animal name
 echo "Refreshing Pub keys, animal name"
@@ -27,11 +27,11 @@ echo "Internal IP Address"
 /etc/monitor-scripts/local-ip.sh
 # Miner Status
 echo "Miner Status"
-miner=(cat ${CFG_FN_ONLINE_STATUS})
+miner=(cat '/var/dashboard/statuses/online_status')
 if [ "$miner" == "active" ]; then
-   echo 'true' > ${CFG_FN_MINER}
+   echo 'true' > '/var/dashboard/statuses/miner'
    else
-   echo 'false' > ${CFG_FN_MINER}
+   echo 'false' > '/var/dashboard/statuses/miner'
 fi
 # miner version and latest version
 echo "Miner version, latest version available"
