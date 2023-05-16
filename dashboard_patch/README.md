@@ -65,3 +65,8 @@ Or you can to by hand, one by one:
 - sudo cp /etc/monitor-scripts/peer-list.sh.old /etc/monitor-scripts/peer-list.sh
 - sudo cp /etc/monitor-scripts/pubkeys.sh.old /etc/monitor-scripts/pubkeys.sh
 - sudo cp ~admin/index.php.old /var/dashboard/public/index.php
+
+### Latest changes
+1. 20230516 When attempting to update miner, check if helium_gateway is installed. If not, abort and send a message because we won't know setting for region.
+2. 20230516 Test if helium_gateway command exists before running the command to get version to suppress error message.
+3. 20230516 Fixed 'miner running' icon on home page showing red instead of green even though miner was active.
