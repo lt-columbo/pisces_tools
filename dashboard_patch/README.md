@@ -1,6 +1,6 @@
 ### if you find this useful, by me a cup of coffee: https://ko-fi.com/ltcolumbo
 
-# Dashboard Patch for Pisces Dashboard v0.2.9
+# Dashboard Patch for Pisces Dashboard v0.2.9 and v0.2.17
 
 ![Picture of Pisces dashboard after patched for helium_gateway](https://github.com/lt-columbo/pisces_tools/blob/main/dashboard_patch/pisces-dashboard-update-screen.png)
 
