@@ -27,7 +27,7 @@ echo "Internal IP Address"
 /etc/monitor-scripts/local-ip.sh
 # Miner Status
 echo "Miner Status"
-miner=(cat '/var/dashboard/statuses/online_status')
+miner=$(cat '/var/dashboard/statuses/online_status')
 if [ "$miner" == "active" ]; then
    echo 'true' > '/var/dashboard/statuses/miner'
    else
